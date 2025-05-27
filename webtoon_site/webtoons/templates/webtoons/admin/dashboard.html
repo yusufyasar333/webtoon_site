@@ -1,0 +1,117 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}Yönetim Paneli - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Yönetim Paneli</h1>
+            <a href="{% url 'webtoons:admin_webtoon_create' %}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Yeni Webtoon Ekle
+            </a>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<!-- İstatistikler -->
+<div class="row mb-5">
+    <div class="col-md-3 mb-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Webtoon Sayısı</h5>
+                <h2 class="card-text">{{ webtoons_count }}</h2>
+                <a href="{% url 'webtoons:admin_webtoon_list' %}" class="text-white">Yönet <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Bölüm Sayısı</h5>
+                <h2 class="card-text">{{ chapters_count }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Tür Sayısı</h5>
+                <h2 class="card-text">{{ categories_count }}</h2>
+                <a href="{% url 'webtoons:admin_category_list' %}" class="text-white">Yönet <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card bg-secondary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Kullanıcı Sayısı</h5>
+                <h2 class="card-text">{{ users_count }}</h2>
+                <a href="{% url 'admin:auth_user_changelist' %}" class="text-white">Yönet <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Son Eklenen Webtoonlar -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Son Eklenen Webtoonlar</h3>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% for webtoon in recent_webtoons %}
+                        <a href="{% url 'webtoons:admin_webtoon_detail' webtoon.slug %}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ webtoon.title }}</h5>
+                                <small>{{ webtoon.created_date|date:"d.m.Y" }}</small>
+                            </div>
+                            <p class="mb-1">{{ webtoon.author }}</p>
+                            <small class="text-muted">{{ webtoon.get_status_display }}</small>
+                        </a>
+                    {% empty %}
+                        <div class="alert alert-info">Henüz webtoon eklenmemiş.</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'webtoons:admin_webtoon_list' %}" class="btn btn-outline-primary btn-sm">Tüm Webtoonlar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Son Yorumlar -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Son Yorumlar</h3>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% for comment in recent_comments %}
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ comment.user.username }}</h5>
+                                <small>{{ comment.created_date|date:"d.m.Y" }}</small>
+                            </div>
+                            <p class="mb-1">{{ comment.content|truncatechars:100 }}</p>
+                            <small class="text-muted">
+                                {% if comment.chapter %}
+                                    {{ comment.webtoon.title }} - Bölüm {{ comment.chapter.number }}
+                                {% else %}
+                                    {{ comment.webtoon.title }}
+                                {% endif %}
+                            </small>
+                        </div>
+                    {% empty %}
+                        <div class="alert alert-info">Henüz yorum yapılmamış.</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,73 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}Arama Sonuçları: "{{ query }}" - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-3">Arama Sonuçları</h1>
+    
+    <div class="card mb-4">
+        <div class="card-body bg-light">
+            <form action="{% url 'webtoons:search' %}" method="get" class="d-flex">
+                <input type="text" name="q" class="form-control" value="{{ query }}" placeholder="Webtoon, yazar veya türü ara...">
+                <button type="submit" class="btn btn-primary ms-2">Ara</button>
+            </form>
+        </div>
+    </div>
+    
+    {% if query %}
+        <div class="mb-4">
+            <p>
+                <strong>"{{ query }}"</strong> için arama sonuçları 
+                {% if result_count %}
+                    <span class="badge bg-primary">{{ result_count }} sonuç</span>
+                {% endif %}
+            </p>
+        </div>
+    {% endif %}
+    
+    {% if webtoons %}
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4">
+            {% for webtoon in webtoons %}
+                <div class="col">
+                    <div class="card h-100 webtoon-card">
+                        <a href="{% url 'webtoons:webtoon_detail' webtoon.slug %}">
+                            <img src="{{ webtoon.thumbnail.url }}" class="card-img-top" alt="{{ webtoon.title }}">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-truncate">
+                                <a href="{% url 'webtoons:webtoon_detail' webtoon.slug %}" class="text-decoration-none text-dark">
+                                    {{ webtoon.title }}
+                                </a>
+                            </h5>
+                            <p class="card-text small text-muted mb-1">{{ webtoon.author }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge {% if webtoon.status == 'ongoing' %}bg-success{% elif webtoon.status == 'completed' %}bg-primary{% else %}bg-warning{% endif %}">
+                                    {{ webtoon.get_status_display }}
+                                </span>
+                                <small class="text-muted">{{ webtoon.views }} görüntülenme</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {% if query %}
+            <div class="alert alert-info">
+                <h4 class="alert-heading">Sonuç bulunamadı!</h4>
+                <p>Arama kriterlerinize uygun webtoon bulunamadı. Aşağıdaki ipuçlarını deneyebilirsiniz:</p>
+                <ul>
+                    <li>Farklı anahtar kelimeler kullanın</li>
+                    <li>Daha kısa veya genel bir arama terimi deneyin</li>
+                    <li>Yazım hatası olmadığından emin olun</li>
+                </ul>
+            </div>
+        {% endif %}
+        
+        <div class="text-center mt-4">
+            <a href="{% url 'webtoons:browse' %}" class="btn btn-primary">Tüm Webtoonları Görüntüle</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %} 

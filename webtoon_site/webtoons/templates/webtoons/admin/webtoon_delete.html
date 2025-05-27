@@ -1,0 +1,65 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}{{ webtoon.title }} Sil - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_dashboard' %}">Yönetim Paneli</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_webtoon_list' %}">Webtoonlar</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_webtoon_detail' webtoon.slug %}">{{ webtoon.title }}</a></li>
+                <li class="breadcrumb-item active">Sil</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h3 class="mb-0">Webtoon'u Sil</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning mb-4">
+                    <h4 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Uyarı!</h4>
+                    <p>Bu webtoon'u silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
+                    <p>Bu işlem "<strong>{{ webtoon.title }}</strong>" adlı webtoon'u ve <strong>tüm bölümlerini, görsellerini, yorumlarını ve diğer ilişkili verileri</strong> kalıcı olarak silecektir.</p>
+                </div>
+                
+                <div class="webtoon-info mb-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {% if webtoon.thumbnail %}
+                                <img src="{{ webtoon.thumbnail.url }}" alt="{{ webtoon.title }}" class="img-fluid rounded">
+                            {% else %}
+                                <div class="bg-secondary text-white d-flex justify-content-center align-items-center" style="height: 200px;">
+                                    <span>Resim Yok</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            <h4>{{ webtoon.title }}</h4>
+                            <p><strong>Yazar:</strong> {{ webtoon.author }}</p>
+                            <p><strong>Bölüm sayısı:</strong> {{ webtoon.chapters.count }}</p>
+                            <p><strong>Durum:</strong> {{ webtoon.get_status_display }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'webtoons:admin_webtoon_detail' webtoon.slug %}" class="btn btn-secondary">İptal</a>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Webtoon'u Sil
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

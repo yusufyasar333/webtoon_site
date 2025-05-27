@@ -1,0 +1,136 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}{{ webtoon.title }} - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-4 mb-4">
+        {% if webtoon.thumbnail %}
+            <img src="{{ webtoon.thumbnail.url }}" class="img-fluid rounded" alt="{{ webtoon.title }}">
+        {% else %}
+            <div class="bg-secondary text-white d-flex justify-content-center align-items-center" style="height: 400px;">
+                <span>Resim Yok</span>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1>{{ webtoon.title }}</h1>
+            {% if user.is_authenticated %}
+                <a href="#" class="bookmark-toggle btn btn-outline-primary" data-webtoon-id="{{ webtoon.id }}" data-bs-toggle="tooltip" title="{% if user_bookmark %}Yer İşaretlerinden Kaldır{% else %}Yer İşaretlerine Ekle{% endif %}">
+                    <i class="{% if user_bookmark %}fas{% else %}far{% endif %} fa-bookmark"></i>
+                </a>
+            {% endif %}
+        </div>
+        
+        <div class="mb-3">
+            <span class="badge bg-primary">{{ webtoon.get_status_display }}</span>
+            {% for category in webtoon.categories.all %}
+                <a href="{% url 'webtoons:category_detail' category.slug %}" class="badge bg-secondary text-decoration-none">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+        
+        <div class="mb-4">
+            <div class="d-flex align-items-center">
+                <div class="rating-container">
+                    <strong class="me-2">Puan:</strong>
+                    <div class="simple-rating" data-webtoon-id="{{ webtoon.id }}" data-avg-rating="{{ avg_rating|floatformat:1 }}">
+                        <i class="rating-star {% if avg_rating >= 2 %}fas{% else %}far{% endif %} fa-star" data-score="1"></i>
+                        <i class="rating-star {% if avg_rating >= 4 %}fas{% else %}far{% endif %} fa-star" data-score="2"></i>
+                        <i class="rating-star {% if avg_rating >= 6 %}fas{% else %}far{% endif %} fa-star" data-score="3"></i>
+                        <i class="rating-star {% if avg_rating >= 8 %}fas{% else %}far{% endif %} fa-star" data-score="4"></i>
+                        <i class="rating-star {% if avg_rating >= 10 %}fas{% else %}far{% endif %} fa-star" data-score="5"></i>
+                        <span class="rating-score ms-2">{{ avg_rating|floatformat:1 }}/10</span>
+                        {% if user_rating %}
+                        <span class="user-rating-text">(Senin puanın: {{ user_rating }})</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p><strong>Yazar:</strong> {{ webtoon.author }}</p>
+        {% if webtoon.artist %}
+            <p><strong>Çizer:</strong> {{ webtoon.artist }}</p>
+        {% endif %}
+        
+        <p><strong>Görüntülenme:</strong> {{ webtoon.views }}</p>
+        <p><strong>Eklenme Tarihi:</strong> {{ webtoon.created_date|date:"d.m.Y" }}</p>
+        
+        <div class="mt-4">
+            <h4>Açıklama</h4>
+            <p>{{ webtoon.description|linebreaks }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Bölümler -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Bölümler</h3>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% for chapter in chapters %}
+                        <a href="{% url 'webtoons:chapter_detail' webtoon.slug chapter.number %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-1">Bölüm {{ chapter.number }}: {{ chapter.title }}</h5>
+                                <small class="text-muted">{{ chapter.release_date|date:"d.m.Y" }}</small>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    {% empty %}
+                        <div class="alert alert-info">Henüz bölüm eklenmemiş.</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Yorumlar -->
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Yorumlar</h3>
+            </div>
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                    <form id="comment-form" class="mb-4">
+                        {% csrf_token %}
+                        <input type="hidden" name="webtoon_id" value="{{ webtoon.id }}">
+                        <div class="mb-3">
+                            <label for="id_content" class="form-label">Yorumunuz</label>
+                            <textarea name="content" id="id_content" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Yorum Yap</button>
+                    </form>
+                {% else %}
+                    <div class="alert alert-info">
+                        Yorum yapmak için <a href="{% url 'login' %}">giriş yapın</a> veya <a href="{% url 'register' %}">kayıt olun</a>.
+                    </div>
+                {% endif %}
+                
+                <div id="comments-list">
+                    {% for comment in comments %}
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-username">{{ comment.user.username }}</span>
+                                <span class="comment-date">{{ comment.created_date|date:"d.m.Y H:i" }}</span>
+                            </div>
+                            <div class="comment-content">
+                                {{ comment.content|linebreaks }}
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="alert alert-info">Henüz yorum yapılmamış. İlk yorumu siz yapın!</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

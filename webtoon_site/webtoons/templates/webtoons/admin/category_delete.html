@@ -1,0 +1,56 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}{{ category.name }} Sil - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_dashboard' %}">Yönetim Paneli</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_category_list' %}">Türler</a></li>
+                <li class="breadcrumb-item active">{{ category.name }} Sil</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h3 class="mb-0">Türü Sil</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert {% if has_webtoons %}alert-danger{% else %}alert-warning{% endif %} mb-4">
+                    <h4 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Uyarı!</h4>
+                    {% if has_webtoons %}
+                        <p>Bu tür silinemez çünkü içinde webtoonlar bulunmaktadır.</p>
+                        <p>Bu türe ait {{ category.webtoons.count }} webtoon bulunmaktadır. Türü silmek için önce bu webtoonları farklı türlere taşıyın veya silin.</p>
+                    {% else %}
+                        <p>Bu türü silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
+                        <p>Bu işlem "<strong>{{ category.name }}</strong>" adlı türü kalıcı olarak silecektir.</p>
+                    {% endif %}
+                </div>
+                
+                <div class="category-info mb-4">
+                    <h4>{{ category.name }}</h4>
+                    {% if category.description %}
+                        <p>{{ category.description }}</p>
+                    {% endif %}
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'webtoons:admin_category_list' %}" class="btn btn-secondary">İptal</a>
+                        <button type="submit" class="btn btn-danger" {% if has_webtoons %}disabled{% endif %}>
+                            <i class="fas fa-trash"></i> Türü Sil
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

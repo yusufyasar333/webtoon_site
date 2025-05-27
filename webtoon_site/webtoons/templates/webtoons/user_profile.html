@@ -1,0 +1,78 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}Profil - {{ user.username }} - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>Profil</h1>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">{{ user.username }}</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Üyelik Tarihi:</strong> {{ user.date_joined|date:"d.m.Y" }}</p>
+                <p><strong>Son Giriş:</strong> {{ user.last_login|date:"d.m.Y H:i" }}</p>
+                <div class="d-grid gap-2">
+                    <a href="{% url 'webtoons:user_bookmarks' %}" class="btn btn-primary">
+                        <i class="fas fa-bookmark"></i> Yer İşaretlerim
+                    </a>
+                    <a href="{% url 'webtoons:user_history' %}" class="btn btn-secondary">
+                        <i class="fas fa-history"></i> Okuma Geçmişim
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Hesap Bilgileri</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Kullanıcı Adı</label>
+                        <input type="text" class="form-control" id="id_username" value="{{ user.username }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">E-posta</label>
+                        <input type="email" class="form-control" id="id_email" value="{{ user.email }}" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_first_name" class="form-label">Ad</label>
+                        <input type="text" class="form-control" id="id_first_name" value="{{ user.first_name }}" name="first_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_last_name" class="form-label">Soyad</label>
+                        <input type="text" class="form-control" id="id_last_name" value="{{ user.last_name }}" name="last_name">
+                    </div>
+                    <hr>
+                    <h4>Şifre Değiştir</h4>
+                    <div class="mb-3">
+                        <label for="id_old_password" class="form-label">Mevcut Şifre</label>
+                        <input type="password" class="form-control" id="id_old_password" name="old_password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_new_password1" class="form-label">Yeni Şifre</label>
+                        <input type="password" class="form-control" id="id_new_password1" name="new_password1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_new_password2" class="form-label">Yeni Şifre (Tekrar)</label>
+                        <input type="password" class="form-control" id="id_new_password2" name="new_password2">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

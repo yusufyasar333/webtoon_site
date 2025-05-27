@@ -1,0 +1,159 @@
+/* Custom styles for Webtoon Site */
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Card hover effect */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Webtoon thumbnails */
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Hero banner */
+.hero-banner {
+    background: linear-gradient(135deg, #343a40 0%, #212529 100%);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer styling */
+footer {
+    border-top: 1px solid #dee2e6;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: #adb5bd !important;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.social-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Chapter reader styles */
+.chapter-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chapter-navigation {
+    position: sticky;
+    bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    z-index: 100;
+}
+
+/* Simple Rating System */
+.rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.simple-rating {
+    display: inline-flex;
+    align-items: center;
+}
+
+.rating-star {
+    color: #ffc107;
+    cursor: pointer;
+    margin-right: 3px;
+    font-size: 1.2rem;
+    transition: transform 0.1s ease;
+}
+
+.rating-star:hover {
+    transform: scale(1.2);
+}
+
+.rating-score {
+    font-weight: bold;
+}
+
+.user-rating-text {
+    color: #6c757d;
+    margin-left: 5px;
+    font-size: 0.9rem;
+}
+
+/* Comments */
+.comment {
+    border-left: 3px solid #dee2e6;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.comment-username {
+    font-weight: bold;
+}
+
+.comment-date {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+/* Pagination */
+.pagination .page-link {
+    color: #343a40;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .card-img-top {
+        height: 200px;
+    }
+    
+    .hero-banner {
+        padding: 3rem !important;
+    }
+    
+    .hero-banner h1 {
+        font-size: 2rem;
+    }
+} 

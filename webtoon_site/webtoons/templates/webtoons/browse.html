@@ -1,0 +1,125 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}Webtoonları Keşfet - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">Webtoonları Keşfet</h1>
+    
+    <!-- Filtreler -->
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Filtreler</h5>
+        </div>
+        <div class="card-body">
+            <form method="get" class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="category" class="form-label">Tür</label>
+                    <select name="category" id="category" class="form-select">
+                        <option value="">Tüm Türler</option>
+                        {% for cat in categories %}
+                            <option value="{{ cat.slug }}" {% if current_category == cat.slug %}selected{% endif %}>{{ cat.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="status" class="form-label">Durum</label>
+                    <select name="status" id="status" class="form-select">
+                        <option value="">Tüm Durumlar</option>
+                        <option value="ongoing" {% if current_status == 'ongoing' %}selected{% endif %}>Devam Ediyor</option>
+                        <option value="completed" {% if current_status == 'completed' %}selected{% endif %}>Tamamlandı</option>
+                        <option value="hiatus" {% if current_status == 'hiatus' %}selected{% endif %}>Ara Verildi</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="sort" class="form-label">Sıralama</label>
+                    <select name="sort" id="sort" class="form-select">
+                        <option value="-created_date" {% if current_sort == '-created_date' %}selected{% endif %}>En Yeni</option>
+                        <option value="created_date" {% if current_sort == 'created_date' %}selected{% endif %}>En Eski</option>
+                        <option value="-views" {% if current_sort == '-views' %}selected{% endif %}>En Popüler</option>
+                        <option value="title" {% if current_sort == 'title' %}selected{% endif %}>İsme Göre (A-Z)</option>
+                        <option value="-title" {% if current_sort == '-title' %}selected{% endif %}>İsme Göre (Z-A)</option>
+                    </select>
+                </div>
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-primary">Filtrele</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Webtoon Listesi -->
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4">
+        {% for webtoon in page_obj %}
+            <div class="col">
+                <div class="card h-100 webtoon-card">
+                    <a href="{% url 'webtoons:webtoon_detail' webtoon.slug %}">
+                        <img src="{{ webtoon.thumbnail.url }}" class="card-img-top" alt="{{ webtoon.title }}">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">
+                            <a href="{% url 'webtoons:webtoon_detail' webtoon.slug %}" class="text-decoration-none text-dark">
+                                {{ webtoon.title }}
+                            </a>
+                        </h5>
+                        <p class="card-text small text-muted mb-1">{{ webtoon.author }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge {% if webtoon.status == 'ongoing' %}bg-success{% elif webtoon.status == 'completed' %}bg-primary{% else %}bg-warning{% endif %}">
+                                {{ webtoon.get_status_display }}
+                            </span>
+                            <small class="text-muted">{{ webtoon.views }} görüntülenme</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12 text-center py-5">
+                <p>Hiç webtoon bulunamadı.</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Sayfalama -->
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}" aria-label="İlk">
+                        <span aria-hidden="true">&laquo;&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}" aria-label="Önceki">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+            
+            {% for i in page_obj.paginator.page_range %}
+                {% if page_obj.number == i %}
+                    <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ i }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}">{{ i }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}" aria-label="Sonraki">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}" aria-label="Son">
+                        <span aria-hidden="true">&raquo;&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %} 

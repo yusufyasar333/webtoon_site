@@ -1,0 +1,91 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}Webtoonları Yönet - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Webtoonları Yönet</h1>
+            <a href="{% url 'webtoons:admin_webtoon_create' %}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Yeni Webtoon Ekle
+            </a>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Tüm Webtoonlar</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Thumbnail</th>
+                                <th>Başlık</th>
+                                <th>Yazar</th>
+                                <th>Durum</th>
+                                <th>Oluşturulma</th>
+                                <th>Görüntülenme</th>
+                                <th>Yayında</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for webtoon in webtoons %}
+                                <tr>
+                                    <td>
+                                        {% if webtoon.thumbnail %}
+                                            <img src="{{ webtoon.thumbnail.url }}" alt="{{ webtoon.title }}" class="img-thumbnail" width="50">
+                                        {% else %}
+                                            <span class="badge bg-secondary">Resim Yok</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ webtoon.title }}</td>
+                                    <td>{{ webtoon.author }}</td>
+                                    <td>
+                                        <span class="badge {% if webtoon.status == 'ongoing' %}bg-primary{% elif webtoon.status == 'completed' %}bg-success{% else %}bg-warning{% endif %}">
+                                            {{ webtoon.get_status_display }}
+                                        </span>
+                                    </td>
+                                    <td>{{ webtoon.created_date|date:"d.m.Y" }}</td>
+                                    <td>{{ webtoon.views }}</td>
+                                    <td>
+                                        {% if webtoon.published %}
+                                            <span class="badge bg-success">Evet</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">Hayır</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{% url 'webtoons:admin_webtoon_detail' webtoon.slug %}" class="btn btn-sm btn-info" title="Detay">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="{% url 'webtoons:admin_webtoon_edit' webtoon.slug %}" class="btn btn-sm btn-warning" title="Düzenle">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="{% url 'webtoons:admin_webtoon_delete' webtoon.slug %}" class="btn btn-sm btn-danger" title="Sil">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="8" class="text-center">Henüz webtoon eklenmemiş.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

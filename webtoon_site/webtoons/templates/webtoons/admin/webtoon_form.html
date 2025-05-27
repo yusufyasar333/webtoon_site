@@ -1,0 +1,181 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}{{ title }} - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_dashboard' %}">Yönetim Paneli</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_webtoon_list' %}">Webtoonlar</a></li>
+                {% if webtoon %}
+                    <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_webtoon_detail' webtoon.slug %}">{{ webtoon.title }}</a></li>
+                    <li class="breadcrumb-item active">Düzenle</li>
+                {% else %}
+                    <li class="breadcrumb-item active">Yeni Webtoon</li>
+                {% endif %}
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>{{ title }}</h1>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Webtoon Bilgileri</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.title.id_for_label }}" class="form-label">Başlık</label>
+                            {{ form.title }}
+                            {% if form.title.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.title.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.status.id_for_label }}" class="form-label">Durum</label>
+                            {{ form.status }}
+                            {% if form.status.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.status.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.author.id_for_label }}" class="form-label">Yazar</label>
+                            {{ form.author }}
+                            {% if form.author.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.author.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.artist.id_for_label }}" class="form-label">Çizer (Opsiyonel)</label>
+                            {{ form.artist }}
+                            {% if form.artist.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.artist.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.description.id_for_label }}" class="form-label">Açıklama</label>
+                        {{ form.description }}
+                        {% if form.description.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.description.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.thumbnail.id_for_label }}" class="form-label">Kapak Görseli</label>
+                        {{ form.thumbnail }}
+                        {% if form.thumbnail.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.thumbnail.errors }}
+                            </div>
+                        {% endif %}
+                        
+                        {% if form.instance.thumbnail %}
+                            <div class="mt-2">
+                                <p>Mevcut görsel:</p>
+                                <img src="{{ form.instance.thumbnail.url }}" class="img-thumbnail" alt="{{ form.instance.title }}" style="max-height: 200px;">
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Türler</label>
+                        <div class="categories-field">
+                            <div class="row">
+                                {% for choice in form.categories %}
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-check">
+                                        {{ choice.tag }}
+                                        <label class="form-check-label" for="{{ choice.id_for_label }}">
+                                            {{ choice.choice_label }}
+                                        </label>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% if form.categories.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.categories.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        {{ form.published }}
+                        <label class="form-check-label" for="{{ form.published.id_for_label }}">
+                            Yayınla
+                        </label>
+                        {% if form.published.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.published.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{% if webtoon %}{% url 'webtoons:admin_webtoon_detail' webtoon.slug %}{% else %}{% url 'webtoons:admin_webtoon_list' %}{% endif %}" class="btn btn-secondary">İptal</a>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.categories-field {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 15px;
+    background-color: #f8f9fa;
+}
+
+.form-check-label {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.form-check-input:checked + .form-check-label {
+    color: #0d6efd;
+}
+</style>
+{% endblock %} 

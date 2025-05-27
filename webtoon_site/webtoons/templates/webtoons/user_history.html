@@ -1,0 +1,53 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}Okuma Geçmişim - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1>Okuma Geçmişim</h1>
+            <hr>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="list-group">
+                <a href="{% url 'webtoons:user_profile' %}" class="list-group-item list-group-item-action">Profil</a>
+                <a href="{% url 'webtoons:user_bookmarks' %}" class="list-group-item list-group-item-action">Yer İşaretleri</a>
+                <a href="{% url 'webtoons:user_history' %}" class="list-group-item list-group-item-action active">Okuma Geçmişi</a>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="mb-0">Okuma Geçmişim</h3>
+                </div>
+                <div class="card-body">
+                    {% if history %}
+                        <div class="list-group">
+                            {% for item in history %}
+                                <a href="{% url 'webtoons:chapter_detail' item.chapter.webtoon.slug item.chapter.number %}" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">{{ item.chapter.webtoon.title }} - Bölüm {{ item.chapter.number }}</h5>
+                                        <small>{{ item.last_read|date:"d.m.Y H:i" }}</small>
+                                    </div>
+                                    <p class="mb-1">{{ item.chapter.title }}</p>
+                                    <small>{{ item.chapter.webtoon.author }}</small>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <p>Henüz hiç webtoon okumamışsınız.</p>
+                            <a href="{% url 'webtoons:browse' %}" class="btn btn-primary">Webtoonları Keşfet</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

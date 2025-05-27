@@ -1,0 +1,139 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}{{ webtoon.title }} Yönetimi - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_dashboard' %}">Yönetim Paneli</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:admin_webtoon_list' %}">Webtoonlar</a></li>
+                <li class="breadcrumb-item active">{{ webtoon.title }}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>{{ webtoon.title }}</h1>
+            <div>
+                <a href="{% url 'webtoons:webtoon_detail' webtoon.slug %}" class="btn btn-info" target="_blank">
+                    <i class="fas fa-eye"></i> Sayfayı Görüntüle
+                </a>
+                <a href="{% url 'webtoons:admin_webtoon_edit' webtoon.slug %}" class="btn btn-warning">
+                    <i class="fas fa-edit"></i> Düzenle
+                </a>
+                <a href="{% url 'webtoons:admin_webtoon_delete' webtoon.slug %}" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Sil
+                </a>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Webtoon Bilgileri</h3>
+            </div>
+            <div class="card-body">
+                {% if webtoon.thumbnail %}
+                    <img src="{{ webtoon.thumbnail.url }}" alt="{{ webtoon.title }}" class="img-fluid rounded mb-3">
+                {% else %}
+                    <div class="bg-secondary text-white d-flex justify-content-center align-items-center mb-3" style="height: 200px;">
+                        <span>Resim Yok</span>
+                    </div>
+                {% endif %}
+                
+                <p><strong>Yazar:</strong> {{ webtoon.author }}</p>
+                {% if webtoon.artist %}
+                    <p><strong>Çizer:</strong> {{ webtoon.artist }}</p>
+                {% endif %}
+                <p><strong>Durum:</strong> <span class="badge {% if webtoon.status == 'ongoing' %}bg-primary{% elif webtoon.status == 'completed' %}bg-success{% else %}bg-warning{% endif %}">{{ webtoon.get_status_display }}</span></p>
+                <p><strong>Yayında:</strong> {% if webtoon.published %}<span class="badge bg-success">Evet</span>{% else %}<span class="badge bg-danger">Hayır</span>{% endif %}</p>
+                <p><strong>Oluşturulma:</strong> {{ webtoon.created_date|date:"d.m.Y" }}</p>
+                <p><strong>Son Güncelleme:</strong> {{ webtoon.updated_date|date:"d.m.Y" }}</p>
+                <p><strong>Görüntülenme:</strong> {{ webtoon.views }}</p>
+                
+                <h5 class="mt-4">Kategoriler:</h5>
+                <div class="mb-3">
+                    {% for category in webtoon.categories.all %}
+                        <span class="badge bg-secondary">{{ category.name }}</span>
+                    {% empty %}
+                        <span class="text-muted">Kategori yok</span>
+                    {% endfor %}
+                </div>
+                
+                <h5>Açıklama:</h5>
+                <p>{{ webtoon.description|linebreaks }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Bölümler</h3>
+                <a href="{% url 'webtoons:admin_chapter_create' webtoon.slug %}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus"></i> Yeni Bölüm Ekle
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Başlık</th>
+                                <th>Yayın Tarihi</th>
+                                <th>Görsel Sayısı</th>
+                                <th>Yayında</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for chapter in chapters %}
+                                <tr>
+                                    <td>{{ chapter.number }}</td>
+                                    <td>{{ chapter.title }}</td>
+                                    <td>{{ chapter.release_date|date:"d.m.Y" }}</td>
+                                    <td>{{ chapter.images.count }}</td>
+                                    <td>
+                                        {% if chapter.published %}
+                                            <span class="badge bg-success">Evet</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">Hayır</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{% url 'webtoons:chapter_detail' webtoon.slug chapter.number %}" class="btn btn-sm btn-info" title="Görüntüle" target="_blank">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="{% url 'webtoons:admin_chapter_edit' webtoon.slug chapter.number %}" class="btn btn-sm btn-warning" title="Düzenle">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="{% url 'webtoons:admin_chapter_delete' webtoon.slug chapter.number %}" class="btn btn-sm btn-danger" title="Sil">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="6" class="text-center">Henüz bölüm eklenmemiş.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

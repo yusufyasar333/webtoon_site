@@ -1,0 +1,66 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}Yer İşaretlerim - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1>Yer İşaretlerim</h1>
+            <hr>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="list-group">
+                <a href="{% url 'webtoons:user_profile' %}" class="list-group-item list-group-item-action">Profil</a>
+                <a href="{% url 'webtoons:user_bookmarks' %}" class="list-group-item list-group-item-action active">Yer İşaretleri</a>
+                <a href="{% url 'webtoons:user_history' %}" class="list-group-item list-group-item-action">Okuma Geçmişi</a>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="mb-0">Yer İşaretlerim</h3>
+                </div>
+                <div class="card-body">
+                    {% if bookmarks %}
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                            {% for bookmark in bookmarks %}
+                                <div class="col">
+                                    <div class="card h-100 webtoon-card">
+                                        <a href="{% url 'webtoons:webtoon_detail' bookmark.webtoon.slug %}">
+                                            <img src="{{ bookmark.webtoon.thumbnail.url }}" class="card-img-top" alt="{{ bookmark.webtoon.title }}">
+                                        </a>
+                                        <div class="card-body">
+                                            <h5 class="card-title text-truncate">
+                                                <a href="{% url 'webtoons:webtoon_detail' bookmark.webtoon.slug %}" class="text-decoration-none text-dark">
+                                                    {{ bookmark.webtoon.title }}
+                                                </a>
+                                            </h5>
+                                            <p class="card-text small text-muted mb-1">{{ bookmark.webtoon.author }}</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="badge {% if bookmark.webtoon.status == 'ongoing' %}bg-success{% elif bookmark.webtoon.status == 'completed' %}bg-primary{% else %}bg-warning{% endif %}">
+                                                    {{ bookmark.webtoon.get_status_display }}
+                                                </span>
+                                                <small class="text-muted">{{ bookmark.created_date|date:"d.m.Y" }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <p>Henüz hiç webtoon yer işaretlememişsiniz.</p>
+                            <a href="{% url 'webtoons:browse' %}" class="btn btn-primary">Webtoonları Keşfet</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

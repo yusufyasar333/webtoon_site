@@ -1,0 +1,150 @@
+{% extends 'webtoons/base.html' %}
+
+{% block title %}{{ webtoon.title }} - Bölüm {{ chapter.number }} - Webtoon Sitesi{% endblock %}
+
+{% block content %}
+<div class="row mb-3">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:home' %}">Ana Sayfa</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'webtoons:webtoon_detail' webtoon.slug %}">{{ webtoon.title }}</a></li>
+                <li class="breadcrumb-item active">Bölüm {{ chapter.number }}: {{ chapter.title }}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>{{ webtoon.title }} - Bölüm {{ chapter.number }}: {{ chapter.title }}</h1>
+            <div>
+                <small class="text-muted">Yayınlanma: {{ chapter.release_date|date:"d.m.Y" }}</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bölüm Gezinme -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between">
+            {% if prev_chapter %}
+                <a href="{% url 'webtoons:chapter_detail' webtoon.slug prev_chapter.number %}" class="btn btn-outline-primary">
+                    <i class="fas fa-chevron-left"></i> Önceki Bölüm
+                </a>
+            {% else %}
+                <button class="btn btn-outline-secondary" disabled>
+                    <i class="fas fa-chevron-left"></i> Önceki Bölüm
+                </button>
+            {% endif %}
+            
+            <a href="{% url 'webtoons:webtoon_detail' webtoon.slug %}" class="btn btn-outline-dark">
+                <i class="fas fa-list"></i> Bölüm Listesi
+            </a>
+            
+            {% if next_chapter %}
+                <a href="{% url 'webtoons:chapter_detail' webtoon.slug next_chapter.number %}" class="btn btn-outline-primary">
+                    Sonraki Bölüm <i class="fas fa-chevron-right"></i>
+                </a>
+            {% else %}
+                <button class="btn btn-outline-secondary" disabled>
+                    Sonraki Bölüm <i class="fas fa-chevron-right"></i>
+                </button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Bölüm İçeriği -->
+<div class="row">
+    <div class="col-12">
+        <div class="chapter-content text-center">
+            {% for image in chapter.images.all %}
+                <img src="{{ image.image.url }}" alt="Sayfa {{ image.order }}" class="chapter-image">
+            {% empty %}
+                <div class="alert alert-info">Bu bölüm için henüz görsel eklenmemiş.</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Alt Bölüm Gezinme -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="chapter-navigation text-center">
+            <div class="d-flex justify-content-between">
+                {% if prev_chapter %}
+                    <a href="{% url 'webtoons:chapter_detail' webtoon.slug prev_chapter.number %}" class="btn btn-outline-primary">
+                        <i class="fas fa-chevron-left"></i> Önceki Bölüm
+                    </a>
+                {% else %}
+                    <button class="btn btn-outline-secondary" disabled>
+                        <i class="fas fa-chevron-left"></i> Önceki Bölüm
+                    </button>
+                {% endif %}
+                
+                <a href="{% url 'webtoons:webtoon_detail' webtoon.slug %}" class="btn btn-outline-dark">
+                    <i class="fas fa-list"></i> Bölüm Listesi
+                </a>
+                
+                {% if next_chapter %}
+                    <a href="{% url 'webtoons:chapter_detail' webtoon.slug next_chapter.number %}" class="btn btn-outline-primary">
+                        Sonraki Bölüm <i class="fas fa-chevron-right"></i>
+                    </a>
+                {% else %}
+                    <button class="btn btn-outline-secondary" disabled>
+                        Sonraki Bölüm <i class="fas fa-chevron-right"></i>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Yorumlar -->
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Yorumlar</h3>
+            </div>
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                    <form id="comment-form" class="mb-4">
+                        {% csrf_token %}
+                        <input type="hidden" name="webtoon_id" value="{{ webtoon.id }}">
+                        <input type="hidden" name="chapter_id" value="{{ chapter.id }}">
+                        <div class="mb-3">
+                            <label for="id_content" class="form-label">Yorumunuz</label>
+                            <textarea name="content" id="id_content" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Yorum Yap</button>
+                    </form>
+                {% else %}
+                    <div class="alert alert-info">
+                        Yorum yapmak için <a href="{% url 'login' %}">giriş yapın</a> veya <a href="{% url 'register' %}">kayıt olun</a>.
+                    </div>
+                {% endif %}
+                
+                <div id="comments-list">
+                    {% for comment in comments %}
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-username">{{ comment.user.username }}</span>
+                                <span class="comment-date">{{ comment.created_date|date:"d.m.Y H:i" }}</span>
+                            </div>
+                            <div class="comment-content">
+                                {{ comment.content|linebreaks }}
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="alert alert-info">Henüz yorum yapılmamış. İlk yorumu siz yapın!</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
