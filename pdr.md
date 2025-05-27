@@ -69,14 +69,14 @@
 - [x] Otomatik güncelleme için bölüm takip sistemi
 
 ### Adım 4: Periyodik Scraping İşlemlerinin Otomasyonu
-- [ ] Celery görev planlayıcısının kurulumu (`pip install celery`)
-- [ ] Periyodik scraping görevlerinin zamanlanması
-- [ ] Yeni bölümlerin otomatik tespiti ve eklenmesi
+- [x] Celery görev planlayıcısının kurulumu (`pip install celery`)
+- [x] Periyodik scraping görevlerinin zamanlanması
+- [x] Yeni bölümlerin otomatik tespiti ve eklenmesi
 
 ### Adım 5: Kullanıcı Arayüzü Geliştirmeleri
-- [ ] Admin paneline scraping kontrolleri ekleme
-- [ ] İçe aktarma durumunu izleme arayüzü
-- [ ] Çekilen webtoonları onaylama/reddetme mekanizması
+- [x] Admin paneline scraping kontrolleri ekleme
+- [x] İçe aktarma durumunu izleme arayüzü
+- [x] Çekilen webtoonları onaylama/reddetme mekanizması
 
 ### Adım 6: Yasal ve Etik Konular
 - [ ] Telif hakkı politikası oluşturma

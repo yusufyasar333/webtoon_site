@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Webtoon Yönetimi{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 48px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+        .sidebar-sticky {
+            position: relative;
+            top: 0;
+            height: calc(100vh - 48px);
+            padding-top: .5rem;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .nav-link {
+            color: #343a40;
+        }
+        .nav-link.active {
+            color: #007bff;
+        }
+        .main-content {
+            margin-left: 240px;
+            padding: 20px;
+        }
+        .header {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 20px;
+        }
+    </style>
+    {% block extra_styles %}{% endblock %}
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link {% if dashboard_active %}active{% endif %}" href="{% url 'webtoons:admin_dashboard' %}">
+                                <i class="fas fa-tachometer-alt"></i> Ana Sayfa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if webtoons_active %}active{% endif %}" href="{% url 'webtoons:admin_webtoons' %}">
+                                <i class="fas fa-book"></i> Webtoonlar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if categories_active %}active{% endif %}" href="{% url 'webtoons:admin_categories' %}">
+                                <i class="fas fa-tags"></i> Kategoriler
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:import_webtoon' %}">
+                                <i class="fas fa-download"></i> İçeri Aktar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:sync_webtoons' %}">
+                                <i class="fas fa-sync"></i> Senkronize Et
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}">
+                                <i class="fas fa-cog"></i> Django Admin
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'webtoons:home' %}">
+                                <i class="fas fa-home"></i> Siteye Dön
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="main-content">
+                <div class="header">
+                    <h1>{% block header %}Webtoon Yönetimi{% endblock %}</h1>
+                </div>
+                
+                {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html> 

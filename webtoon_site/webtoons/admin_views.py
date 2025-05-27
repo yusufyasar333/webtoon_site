@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from .models import ImportedWebtoon, ImportLog, ExternalSource
 from .services import import_webtoon_from_source, sync_webtoon_chapters
+from .tasks import sync_webtoon, sync_all_auto_webtoons
 from .forms import ImportWebtoonForm
 
 @staff_member_required
@@ -89,27 +90,26 @@ def sync_webtoon_ajax(request, webtoon_id):
     else:
         max_chapters = None
     
-    # Senkronizasyon işlemini başlat
-    result = sync_webtoon_chapters(
-        imported_webtoon=imported_webtoon,
-        max_new_chapters=max_chapters
-    )
+    # Asenkron görevi başlat
+    task = sync_webtoon.delay(webtoon_id, max_chapters)
     
-    return JsonResponse(result)
+    # Tarayıcıya hemen yanıt ver
+    return JsonResponse({
+        'success': True,
+        'message': 'Senkronizasyon görevi başlatıldı',
+        'task_id': task.id
+    })
 
 @staff_member_required
 @require_POST
 def sync_all_webtoons_ajax(request):
     """Otomatik senkronizasyon açık olan tüm webtoonları senkronize et (AJAX)"""
-    auto_sync_webtoons = ImportedWebtoon.objects.filter(auto_sync=True)
+    # Asenkron görevi başlat
+    task = sync_all_auto_webtoons.delay()
     
-    results = []
-    for imported_webtoon in auto_sync_webtoons:
-        result = sync_webtoon_chapters(imported_webtoon=imported_webtoon)
-        results.append({
-            'webtoon': imported_webtoon.webtoon.title,
-            'success': result['success'],
-            'message': result['message'],
-        })
-    
-    return JsonResponse({'results': results}) 
+    # Tarayıcıya hemen yanıt ver
+    return JsonResponse({
+        'success': True,
+        'message': 'Tüm webtoonların senkronizasyon görevi başlatıldı',
+        'task_id': task.id
+    }) 

@@ -1,8 +1,12 @@
 from django.contrib import admin
+from django.urls import path
+from django.utils.html import format_html
+from django.urls import reverse
 from .models import (
     Category, Webtoon, Chapter, ChapterImage, Comment, Rating, Bookmark, ReadingHistory,
     ExternalSource, ImportedWebtoon, ImportedChapter, ImportLog
 )
+from . import admin_views
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -84,3 +88,14 @@ class ImportLogAdmin(admin.ModelAdmin):
     list_filter = ['source', 'status', 'start_time']
     search_fields = ['message', 'imported_webtoon__webtoon__title']
     readonly_fields = ['source', 'imported_webtoon', 'status', 'start_time', 'end_time', 'message', 'imported_chapters']
+
+# Admin site başlığını ve index başlığını değiştir
+admin.site.site_header = 'Webtoon Yönetim Paneli'
+admin.site.site_title = 'Webtoon Yönetimi'
+admin.site.index_title = 'Webtoon Yönetimine Hoş Geldiniz'
+
+# Admin site URL'lerini ekle
+admin.site.get_urls = lambda: admin.site.urls[0] + [
+    path('import-webtoon/', admin_views.import_webtoon, name='import_webtoon'),
+    path('sync-webtoons/', admin_views.sync_webtoons, name='sync_webtoons'),
+]
