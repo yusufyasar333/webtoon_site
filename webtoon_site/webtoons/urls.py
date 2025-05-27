@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import admin_views
 
 app_name = 'webtoons'
 
@@ -46,4 +47,12 @@ urlpatterns = [
     path('yonetim/kategoriler/', views.admin_category_list, name='admin_category_list'),
     path('yonetim/kategoriler/<slug:slug>/edit/', views.admin_category_edit, name='admin_category_edit'),
     path('yonetim/kategoriler/<slug:slug>/delete/', views.admin_category_delete, name='admin_category_delete'),
+]
+
+# Admin özel URL'leri
+urlpatterns += [
+    path('admin/webtoons/import-webtoon/', admin_views.import_webtoon, name='import_webtoon'),
+    path('admin/webtoons/sync-webtoons/', admin_views.sync_webtoons, name='sync_webtoons'),
+    path('admin/webtoons/sync-webtoon/<int:webtoon_id>/', admin_views.sync_webtoon_ajax, name='sync_webtoon_ajax'),
+    path('admin/webtoons/sync-all-webtoons/', admin_views.sync_all_webtoons_ajax, name='sync_all_webtoons_ajax'),
 ] 

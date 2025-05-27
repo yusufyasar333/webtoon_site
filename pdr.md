@@ -57,16 +57,16 @@
 - [x] WebDriver (Chrome veya Firefox için)
 
 ### Adım 2: Web Scraping Bileşenlerinin Oluşturulması
-- [ ] Hedef sitelerin yapısını analiz etme
-- [ ] Webtoon başlıkları, açıklamaları ve kapak resimlerini çekme fonksiyonu
-- [ ] Bölüm içeriklerini ve resimlerini çekme fonksiyonu
-- [ ] Anti-bot korumasını aşma stratejileri (User-agent rotasyonu, proxy kullanımı)
-- [ ] Çekilen içerikleri geçici olarak depolama mekanizması
+- [x] Hedef sitelerin yapısını analiz etme
+- [x] Webtoon başlıkları, açıklamaları ve kapak resimlerini çekme fonksiyonu
+- [x] Bölüm içeriklerini ve resimlerini çekme fonksiyonu
+- [x] Anti-bot korumasını aşma stratejileri (User-agent rotasyonu, proxy kullanımı)
+- [x] Çekilen içerikleri geçici olarak depolama mekanizması
 
 ### Adım 3: Veritabanı Entegrasyonu
-- [ ] Çekilen webtoonlar için veritabanı modellerinin genişletilmesi
-- [ ] Kaynak site referansı ve orijinal URL bilgilerinin saklanması
-- [ ] Otomatik güncelleme için bölüm takip sistemi
+- [x] Çekilen webtoonlar için veritabanı modellerinin genişletilmesi
+- [x] Kaynak site referansı ve orijinal URL bilgilerinin saklanması
+- [x] Otomatik güncelleme için bölüm takip sistemi
 
 ### Adım 4: Periyodik Scraping İşlemlerinin Otomasyonu
 - [ ] Celery görev planlayıcısının kurulumu (`pip install celery`)

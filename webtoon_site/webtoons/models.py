@@ -144,3 +144,63 @@ class ReadingHistory(models.Model):
     
     def __str__(self):
         return f"{self.user.username} - {self.chapter.webtoon.title} - Bölüm {self.chapter.number}"
+
+# Dış kaynaklardan içeri aktarılan webtoonlar için modeller
+class ExternalSource(models.Model):
+    """Webtoon içeriklerinin çekildiği dış kaynakları temsil eder"""
+    name = models.CharField(max_length=100)
+    base_url = models.URLField()
+    active = models.BooleanField(default=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.name
+
+class ImportedWebtoon(models.Model):
+    """Dış kaynaklardan içeri aktarılan webtoonları temsil eder"""
+    webtoon = models.OneToOneField(Webtoon, on_delete=models.CASCADE, related_name='import_info')
+    source = models.ForeignKey(ExternalSource, on_delete=models.CASCADE, related_name='imported_webtoons')
+    external_id = models.CharField(max_length=255, blank=True)
+    original_url = models.URLField()
+    last_sync = models.DateTimeField(auto_now=True)
+    auto_sync = models.BooleanField(default=True)
+    
+    class Meta:
+        unique_together = ['source', 'external_id']
+    
+    def __str__(self):
+        return f"{self.webtoon.title} (from {self.source.name})"
+
+class ImportedChapter(models.Model):
+    """Dış kaynaklardan içeri aktarılan bölümleri temsil eder"""
+    chapter = models.OneToOneField(Chapter, on_delete=models.CASCADE, related_name='import_info')
+    imported_webtoon = models.ForeignKey(ImportedWebtoon, on_delete=models.CASCADE, related_name='imported_chapters')
+    original_url = models.URLField()
+    external_id = models.CharField(max_length=255, blank=True)
+    
+    def __str__(self):
+        return f"{self.chapter.webtoon.title} - Bölüm {self.chapter.number} (from {self.imported_webtoon.source.name})"
+
+class ImportLog(models.Model):
+    """İçeri aktarma işlemlerinin loglarını tutar"""
+    STATUS_CHOICES = (
+        ('pending', 'Bekliyor'),
+        ('running', 'Çalışıyor'),
+        ('completed', 'Tamamlandı'),
+        ('failed', 'Başarısız'),
+    )
+    
+    source = models.ForeignKey(ExternalSource, on_delete=models.CASCADE, related_name='import_logs')
+    imported_webtoon = models.ForeignKey(ImportedWebtoon, on_delete=models.CASCADE, related_name='import_logs', null=True, blank=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    start_time = models.DateTimeField(auto_now_add=True)
+    end_time = models.DateTimeField(null=True, blank=True)
+    message = models.TextField(blank=True)
+    imported_chapters = models.PositiveIntegerField(default=0)
+    
+    class Meta:
+        ordering = ['-start_time']
+    
+    def __str__(self):
+        return f"{self.source.name} - {self.status} - {self.start_time.strftime('%Y-%m-%d %H:%M')}"

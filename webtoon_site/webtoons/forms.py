@@ -2,6 +2,8 @@ from django import forms
 from django.utils.text import slugify
 from django.forms import inlineformset_factory
 from .models import Webtoon, Category, Chapter, ChapterImage
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class WebtoonForm(forms.ModelForm):
     GENRE_CHOICES = [
@@ -100,4 +102,28 @@ ChapterImageFormSet = inlineformset_factory(
     extra=20,
     max_num=100,
     can_delete=True
-) 
+)
+
+class ImportWebtoonForm(forms.Form):
+    """Webtoon içeri aktarma formu"""
+    source_url = forms.URLField(
+        label="Kaynak URL",
+        widget=forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'https://example-webtoon-site.com/webtoon/123'})
+    )
+    source_name = forms.CharField(
+        label="Kaynak Adı",
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: Example Webtoon Site'})
+    )
+    max_chapters = forms.IntegerField(
+        label="Maksimum Bölüm Sayısı",
+        required=False,
+        min_value=1,
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Boş bırakılırsa tüm bölümler indirilir'})
+    )
+    auto_sync = forms.BooleanField(
+        label="Otomatik Senkronizasyon",
+        required=False,
+        initial=True,
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
+    ) 

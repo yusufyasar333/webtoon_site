@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Category, Webtoon, Chapter, ChapterImage, Comment, Rating, Bookmark, ReadingHistory
+from .models import (
+    Category, Webtoon, Chapter, ChapterImage, Comment, Rating, Bookmark, ReadingHistory,
+    ExternalSource, ImportedWebtoon, ImportedChapter, ImportLog
+)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -49,3 +52,35 @@ class ReadingHistoryAdmin(admin.ModelAdmin):
     list_display = ['user', 'chapter', 'last_read']
     list_filter = ['last_read']
     search_fields = ['user__username', 'chapter__webtoon__title']
+
+@admin.register(ExternalSource)
+class ExternalSourceAdmin(admin.ModelAdmin):
+    list_display = ['name', 'base_url', 'active', 'created_date', 'updated_date']
+    list_filter = ['active', 'created_date']
+    search_fields = ['name', 'base_url']
+
+class ImportedChapterInline(admin.TabularInline):
+    model = ImportedChapter
+    extra = 0
+    fields = ['chapter', 'original_url', 'external_id']
+    readonly_fields = ['chapter']
+
+@admin.register(ImportedWebtoon)
+class ImportedWebtoonAdmin(admin.ModelAdmin):
+    list_display = ['webtoon', 'source', 'last_sync', 'auto_sync']
+    list_filter = ['source', 'auto_sync', 'last_sync']
+    search_fields = ['webtoon__title', 'external_id', 'original_url']
+    inlines = [ImportedChapterInline]
+
+@admin.register(ImportedChapter)
+class ImportedChapterAdmin(admin.ModelAdmin):
+    list_display = ['chapter', 'imported_webtoon', 'external_id']
+    list_filter = ['imported_webtoon__source']
+    search_fields = ['chapter__title', 'external_id', 'original_url']
+
+@admin.register(ImportLog)
+class ImportLogAdmin(admin.ModelAdmin):
+    list_display = ['source', 'imported_webtoon', 'status', 'start_time', 'end_time', 'imported_chapters']
+    list_filter = ['source', 'status', 'start_time']
+    search_fields = ['message', 'imported_webtoon__webtoon__title']
+    readonly_fields = ['source', 'imported_webtoon', 'status', 'start_time', 'end_time', 'message', 'imported_chapters']
