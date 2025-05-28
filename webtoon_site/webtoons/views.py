@@ -23,6 +23,11 @@ import socket
 import datetime
 from django.core.management import call_command
 from io import StringIO
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+import json
+from django.core.files.base import ContentFile
+import requests
 
 def home(request):
     """Ana sayfa görünümü"""
@@ -923,4 +928,91 @@ def admin_fix_chapters(request):
         'empty_chapters': empty_chapters,
         'empty_chapters_count': empty_chapters.count(),
         'title': 'Bozuk Bölümleri Düzelt',
+    })
+
+@csrf_exempt
+def api_import_chapter(request):
+    """Dışarıdan scraping verisi almak için API endpoint"""
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Sadece POST istekleri destekleniyor.'}, status=405)
+
+    # Basit token auth
+    api_token = request.headers.get('X-API-TOKEN')
+    expected_token = getattr(settings, 'SCRAPER_API_TOKEN', None)
+    if not expected_token or api_token != expected_token:
+        return JsonResponse({'error': 'Yetkisiz. Geçersiz API token.'}, status=401)
+
+    try:
+        data = json.loads(request.body.decode('utf-8'))
+    except Exception as e:
+        return JsonResponse({'error': f'JSON parse hatası: {e}'}, status=400)
+
+    # Webtoon bilgileri
+    webtoon_data = data.get('webtoon')
+    chapter_data = data.get('chapter')
+    if not webtoon_data or not chapter_data:
+        return JsonResponse({'error': 'Eksik veri: webtoon veya chapter alanı yok.'}, status=400)
+
+    # Webtoon'u bul veya oluştur
+    slug = webtoon_data.get('slug') or slugify(webtoon_data.get('title', ''))
+    webtoon, created = Webtoon.objects.get_or_create(
+        slug=slug,
+        defaults={
+            'title': webtoon_data.get('title', ''),
+            'description': webtoon_data.get('description', ''),
+            'status': 'ongoing',
+            'published': True,
+        }
+    )
+    # Kategorileri ekle
+    categories = webtoon_data.get('categories', [])
+    for cat_name in categories:
+        cat_slug = slugify(cat_name)
+        category, _ = Category.objects.get_or_create(slug=cat_slug, defaults={'name': cat_name})
+        webtoon.categories.add(category)
+    # Thumbnail indir ve ekle (ilk eklemede)
+    if created and webtoon_data.get('thumbnail_url'):
+        try:
+            resp = requests.get(webtoon_data['thumbnail_url'])
+            if resp.status_code == 200:
+                ext = webtoon_data['thumbnail_url'].split('.')[-1][:4]
+                webtoon.thumbnail.save(f"{slug}_thumb.{ext}", ContentFile(resp.content), save=True)
+        except Exception:
+            pass
+    webtoon.save()
+
+    # Chapter oluştur
+    chapter_number = chapter_data.get('number')
+    chapter_title = chapter_data.get('title', f'Bölüm {chapter_number}')
+    chapter, ch_created = Chapter.objects.get_or_create(
+        webtoon=webtoon,
+        number=chapter_number,
+        defaults={
+            'title': chapter_title,
+            'published': True,
+        }
+    )
+    # Resimleri ekle
+    images = chapter_data.get('images', [])
+    added_images = 0
+    for idx, img_url in enumerate(images):
+        try:
+            resp = requests.get(img_url)
+            if resp.status_code == 200:
+                ext = img_url.split('.')[-1][:4]
+                img_name = f"{slug}_ch{chapter_number}_img{idx+1}.{ext}"
+                image_file = ContentFile(resp.content)
+                ChapterImage.objects.create(
+                    chapter=chapter,
+                    image=image_file,
+                    order=idx
+                )
+                added_images += 1
+        except Exception:
+            continue
+    return JsonResponse({
+        'success': True,
+        'webtoon': webtoon.title,
+        'chapter': chapter.title,
+        'images_added': added_images
     })

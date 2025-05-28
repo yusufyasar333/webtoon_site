@@ -28,6 +28,7 @@ urlpatterns = [
     path('api/bookmark/<int:webtoon_id>/', views.toggle_bookmark, name='toggle_bookmark'),
     path('api/rate/<int:webtoon_id>/', views.rate_webtoon, name='rate_webtoon'),
     path('api/comment/add/', views.add_comment, name='add_comment'),
+    path('api/import-chapter/', views.api_import_chapter, name='api_import_chapter'),
     
     # Arama
     path('search/', views.search, name='search'),
