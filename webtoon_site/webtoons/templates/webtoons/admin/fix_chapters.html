@@ -1,0 +1,111 @@
+{% extends "webtoons/admin/base_admin.html" %}
+{% load static %}
+
+{% block title %}Bozuk Bölümleri Düzelt - Yönetim Paneli{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Bozuk Bölümleri Düzelt</h1>
+                <a href="{% url 'webtoons:admin_dashboard' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Yönetim Paneline Dön
+                </a>
+            </div>
+            <p class="text-muted">Bu sayfa, yarım kalan veya bozuk bölümleri düzeltmenize yardımcı olur.</p>
+            <hr>
+        </div>
+    </div>
+    
+    <!-- Boş Bölümler -->
+    <div class="card mb-4">
+        <div class="card-header bg-warning text-white">
+            <h5 class="mb-0">Resmi Olmayan Bölümler ({{ empty_chapters_count }})</h5>
+        </div>
+        <div class="card-body">
+            {% if empty_chapters %}
+                <p>Aşağıdaki bölümler veritabanında kayıtlı ancak resim içermiyor:</p>
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>Webtoon</th>
+                                <th>Bölüm</th>
+                                <th>Yayınlanma Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for chapter in empty_chapters %}
+                            <tr>
+                                <td>{{ chapter.webtoon.title }}</td>
+                                <td>{{ chapter.title }}</td>
+                                <td>{{ chapter.release_date|date:"d.m.Y H:i" }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="mb-0 text-success">Resmi olmayan bölüm bulunamadı.</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Temizleme İşlemi -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Webtoon Bölümlerini Temizle</h5>
+        </div>
+        <div class="card-body">
+            <p>Bu işlem, seçtiğiniz webtoon için medya dosyalarını ve veritabanı kayıtlarını temizler.</p>
+            
+            <form method="post" action="{% url 'webtoons:admin_fix_chapters' %}">
+                {% csrf_token %}
+                
+                <div class="form-group mb-3">
+                    <label for="webtoon_slug">Webtoon:</label>
+                    <select name="webtoon_slug" id="webtoon_slug" class="form-select" required>
+                        <option value="">-- Webtoon Seçin --</option>
+                        {% for webtoon in webtoons %}
+                            <option value="{{ webtoon.slug }}">{{ webtoon.title }} ({{ webtoon.chapter_count }} bölüm)</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="fix_empty" id="fix_empty">
+                    <label class="form-check-label" for="fix_empty">
+                        Resmi olmayan bölümleri temizle
+                    </label>
+                    <div class="form-text">Resim içermeyen bölümleri veritabanından siler.</div>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="clean_missing_images" id="clean_missing_images" checked>
+                    <label class="form-check-label" for="clean_missing_images">
+                        Eksik resim kayıtlarını temizle
+                    </label>
+                    <div class="form-text">Fiziksel olarak mevcut olmayan resim kayıtlarını veritabanından siler, ancak bölümleri silmez.</div>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="delete_orphaned" id="delete_orphaned">
+                    <label class="form-check-label" for="delete_orphaned">
+                        Veritabanında olmayan media dosyalarını sil
+                    </label>
+                    <div class="form-text">Veritabanında kaydı olmayan media dosyalarını dosya sisteminden siler.</div>
+                </div>
+                
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i> Bu işlem geri alınamaz! Silinen kayıtlar ve media dosyaları kurtarılamaz.
+                </div>
+                
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-broom"></i> Temizleme İşlemini Başlat
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -55,22 +55,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if webtoons_active %}active{% endif %}" href="{% url 'webtoons:admin_webtoons' %}">
+                            <a class="nav-link {% if webtoons_active %}active{% endif %}" href="{% url 'webtoons:admin_webtoon_list' %}">
                                 <i class="fas fa-book"></i> Webtoonlar
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if categories_active %}active{% endif %}" href="{% url 'webtoons:admin_categories' %}">
+                            <a class="nav-link {% if categories_active %}active{% endif %}" href="{% url 'webtoons:admin_category_list' %}">
                                 <i class="fas fa-tags"></i> Kategoriler
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'admin:import_webtoon' %}">
+                            <a class="nav-link" href="{% url 'webtoons:admin_import_webtoon' %}">
                                 <i class="fas fa-download"></i> İçeri Aktar
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'admin:sync_webtoons' %}">
+                            <a class="nav-link" href="{% url 'webtoons:admin_sync_webtoons' %}">
                                 <i class="fas fa-sync"></i> Senkronize Et
                             </a>
                         </li>
@@ -82,6 +82,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'webtoons:home' %}">
                                 <i class="fas fa-home"></i> Siteye Dön
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == fix_chapters_url %}active{% endif %}" href="{% url 'webtoons:admin_fix_chapters' %}">
+                                <i class="fas fa-tools"></i> Bozuk Bölümleri Düzelt
                             </a>
                         </li>
                     </ul>

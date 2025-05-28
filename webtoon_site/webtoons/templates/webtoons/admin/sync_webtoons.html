@@ -1,7 +1,9 @@
-{% extends "admin/base_site.html" %}
+{% extends "webtoons/admin/base_admin.html" %}
 {% load static %}
 
-{% block extrastyle %}
+{% block title %}Webtoon Senkronizasyonu - Yönetim Paneli{% endblock %}
+
+{% block style %}
 <style>
     .section {
         background-color: #fff;
@@ -9,22 +11,6 @@
         border-radius: 4px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         margin-bottom: 20px;
-    }
-    .btn-primary {
-        background-color: #447e9b;
-        border-color: #447e9b;
-    }
-    .btn-primary:hover {
-        background-color: #366b83;
-        border-color: #366b83;
-    }
-    .btn-warning {
-        background-color: #ffc107;
-        border-color: #ffc107;
-    }
-    .btn-warning:hover {
-        background-color: #e0a800;
-        border-color: #e0a800;
     }
     .log-item {
         padding: 10px;
@@ -47,97 +33,49 @@
 </style>
 {% endblock %}
 
-{% block extrahead %}
+{% block scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Tekil webtoon senkronizasyonu
-        const syncButtons = document.querySelectorAll('.sync-webtoon-btn');
-        syncButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const webtoonId = this.getAttribute('data-id');
-                const statusElem = document.getElementById(`status-${webtoonId}`);
-                const maxChapters = document.getElementById(`max-chapters-${webtoonId}`).value;
+        // Tüm senkronizasyon formlarını bul
+        const syncForms = document.querySelectorAll('.sync-form');
+        
+        // Her form için
+        syncForms.forEach(form => {
+            const maxChaptersInput = form.parentElement.querySelector('.max-chapters-input');
+            const maxChaptersValue = form.querySelector('.max-chapters-value');
+            
+            // Form gönderilmeden önce
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Buton ve durum güncelleme
-                this.disabled = true;
-                statusElem.textContent = 'Senkronize ediliyor...';
-                statusElem.className = 'sync-status text-warning';
+                // Max chapters değerini kontrol et ve aktar
+                if (maxChaptersInput && maxChaptersInput.value) {
+                    maxChaptersValue.value = maxChaptersInput.value;
+                    console.log('Maksimum bölüm sayısı:', maxChaptersValue.value);
+                }
                 
-                // AJAX isteği
-                const formData = new FormData();
-                formData.append('max_chapters', maxChapters);
-                
-                fetch(`/admin/webtoons/sync-webtoon/${webtoonId}/`, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        statusElem.textContent = `Başarılı: ${data.new_chapters} yeni bölüm eklendi.`;
-                        statusElem.className = 'sync-status text-success';
-                    } else {
-                        statusElem.textContent = `Hata: ${data.message}`;
-                        statusElem.className = 'sync-status text-danger';
-                    }
-                    this.disabled = false;
-                })
-                .catch(error => {
-                    statusElem.textContent = `Bağlantı hatası: ${error}`;
-                    statusElem.className = 'sync-status text-danger';
-                    this.disabled = false;
-                });
+                // Formu gönder
+                this.submit();
             });
         });
-        
-        // Toplu senkronizasyon
-        const syncAllBtn = document.getElementById('sync-all-btn');
-        if (syncAllBtn) {
-            syncAllBtn.addEventListener('click', function() {
-                const statusElem = document.getElementById('sync-all-status');
-                
-                // Buton ve durum güncelleme
-                this.disabled = true;
-                statusElem.textContent = 'Tüm webtoonlar senkronize ediliyor...';
-                statusElem.className = 'sync-status text-warning';
-                
-                // AJAX isteği
-                fetch('/admin/webtoons/sync-all-webtoons/', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    let statusHtml = '<ul>';
-                    data.results.forEach(result => {
-                        const textClass = result.success ? 'text-success' : 'text-danger';
-                        statusHtml += `<li class="${textClass}">${result.webtoon}: ${result.message}</li>`;
-                    });
-                    statusHtml += '</ul>';
-                    
-                    statusElem.innerHTML = statusHtml;
-                    this.disabled = false;
-                })
-                .catch(error => {
-                    statusElem.textContent = `Bağlantı hatası: ${error}`;
-                    statusElem.className = 'sync-status text-danger';
-                    this.disabled = false;
-                });
-            });
-        }
     });
 </script>
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Webtoon Senkronizasyonu</h1>
-    <p class="help">Bu sayfa, içeri aktarılmış webtoonları senkronize etmenize olanak tanır.</p>
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Webtoon Senkronizasyonu</h1>
+                <a href="{% url 'webtoons:admin_dashboard' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Yönetim Paneline Dön
+                </a>
+            </div>
+            <p class="text-muted">Bu sayfa, içeri aktarılmış webtoonları senkronize etmenize olanak tanır.</p>
+            <hr>
+        </div>
+    </div>
     
     {% csrf_token %}
     
@@ -147,42 +85,47 @@
             <button id="sync-all-btn" class="btn btn-warning mb-3">Tümünü Senkronize Et</button>
             <div id="sync-all-status" class="sync-status mb-3"></div>
             
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Webtoon</th>
-                        <th>Kaynak</th>
-                        <th>Son Senkronizasyon</th>
-                        <th>Maksimum Bölüm</th>
-                        <th>İşlem</th>
-                        <th>Durum</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for imported_webtoon in auto_sync_webtoons %}
-                    <tr>
-                        <td>
-                            <a href="{% url 'admin:webtoons_webtoon_change' imported_webtoon.webtoon.id %}">
-                                {{ imported_webtoon.webtoon.title }}
-                            </a>
-                        </td>
-                        <td>{{ imported_webtoon.source.name }}</td>
-                        <td>{{ imported_webtoon.last_sync|date:"d.m.Y H:i" }}</td>
-                        <td>
-                            <input type="number" id="max-chapters-{{ imported_webtoon.id }}" class="form-control form-control-sm" min="1" placeholder="Tümü">
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-primary sync-webtoon-btn" data-id="{{ imported_webtoon.id }}">
-                                Senkronize Et
-                            </button>
-                        </td>
-                        <td>
-                            <span id="status-{{ imported_webtoon.id }}" class="sync-status"></span>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Webtoon</th>
+                            <th>Kaynak</th>
+                            <th>Son Senkronizasyon</th>
+                            <th>Maksimum Bölüm</th>
+                            <th>İşlem</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for imported_webtoon in auto_sync_webtoons %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'webtoons:admin_webtoon_detail' imported_webtoon.webtoon.slug %}">
+                                    {{ imported_webtoon.webtoon.title }}
+                                </a>
+                            </td>
+                            <td>{{ imported_webtoon.source.name }}</td>
+                            <td>{{ imported_webtoon.last_sync|date:"d.m.Y H:i" }}</td>
+                            <td>
+                                <div class="input-group mb-2">
+                                    <input type="number" class="form-control form-control-sm max-chapters-input" min="1" placeholder="Tümü" aria-label="Maksimum Bölüm Sayısı">
+                                    <form method="post" action="{% url 'webtoons:admin_sync_webtoons' %}" class="sync-form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="webtoon_id" value="{{ imported_webtoon.id }}">
+                                        <input type="hidden" name="max_chapters" class="max-chapters-value">
+                                        <button type="submit" class="btn btn-primary btn-sm sync-button">Senkronize Et</button>
+                                    </form>
+                                </div>
+                            </td>
+                            <td>
+                                <span id="status-{{ imported_webtoon.id }}" class="sync-status"></span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% else %}
             <p>Otomatik senkronize edilen webtoon bulunmamaktadır.</p>
         {% endif %}
@@ -191,86 +134,93 @@
     <div class="section">
         <h2>Tüm İçeri Aktarılan Webtoonlar</h2>
         {% if all_imported_webtoons %}
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Webtoon</th>
-                        <th>Kaynak</th>
-                        <th>Son Senkronizasyon</th>
-                        <th>Otomatik Senkronizasyon</th>
-                        <th>Maksimum Bölüm</th>
-                        <th>İşlem</th>
-                        <th>Durum</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for imported_webtoon in all_imported_webtoons %}
-                    <tr>
-                        <td>
-                            <a href="{% url 'admin:webtoons_webtoon_change' imported_webtoon.webtoon.id %}">
-                                {{ imported_webtoon.webtoon.title }}
-                            </a>
-                        </td>
-                        <td>{{ imported_webtoon.source.name }}</td>
-                        <td>{{ imported_webtoon.last_sync|date:"d.m.Y H:i" }}</td>
-                        <td>{% if imported_webtoon.auto_sync %}Evet{% else %}Hayır{% endif %}</td>
-                        <td>
-                            <input type="number" id="max-chapters-{{ imported_webtoon.id }}" class="form-control form-control-sm" min="1" placeholder="Tümü">
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-primary sync-webtoon-btn" data-id="{{ imported_webtoon.id }}">
-                                Senkronize Et
-                            </button>
-                        </td>
-                        <td>
-                            <span id="status-{{ imported_webtoon.id }}" class="sync-status"></span>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Webtoon</th>
+                            <th>Kaynak</th>
+                            <th>Son Senkronizasyon</th>
+                            <th>Otomatik Senkronizasyon</th>
+                            <th>Maksimum Bölüm</th>
+                            <th>İşlem</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for imported_webtoon in all_imported_webtoons %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'webtoons:admin_webtoon_detail' imported_webtoon.webtoon.slug %}">
+                                    {{ imported_webtoon.webtoon.title }}
+                                </a>
+                            </td>
+                            <td>{{ imported_webtoon.source.name }}</td>
+                            <td>{{ imported_webtoon.last_sync|date:"d.m.Y H:i" }}</td>
+                            <td>{{ imported_webtoon.auto_sync|yesno:"Evet,Hayır" }}</td>
+                            <td>
+                                <div class="input-group mb-2">
+                                    <input type="number" class="form-control form-control-sm max-chapters-input" min="1" placeholder="Tümü" aria-label="Maksimum Bölüm Sayısı">
+                                    <form method="post" action="{% url 'webtoons:admin_sync_webtoons' %}" class="sync-form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="webtoon_id" value="{{ imported_webtoon.id }}">
+                                        <input type="hidden" name="max_chapters" class="max-chapters-value">
+                                        <button type="submit" class="btn btn-primary btn-sm sync-button">Senkronize Et</button>
+                                    </form>
+                                </div>
+                            </td>
+                            <td>
+                                <span id="status-{{ imported_webtoon.id }}" class="sync-status"></span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% else %}
-            <p>İçeri aktarılmış webtoon bulunmamaktadır.</p>
+            <p>İçeri aktarılan webtoon bulunmamaktadır.</p>
         {% endif %}
     </div>
     
     <div class="section">
         <h2>Son Senkronizasyon İşlemleri</h2>
         {% if recent_logs %}
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Kaynak</th>
-                        <th>Webtoon</th>
-                        <th>Durum</th>
-                        <th>Başlangıç</th>
-                        <th>Bitiş</th>
-                        <th>Bölümler</th>
-                        <th>Mesaj</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for log in recent_logs %}
-                    <tr class="log-item log-{{ log.status }}">
-                        <td>{{ log.source.name }}</td>
-                        <td>
-                            {% if log.imported_webtoon %}
-                                <a href="{% url 'admin:webtoons_webtoon_change' log.imported_webtoon.webtoon.id %}">
-                                    {{ log.imported_webtoon.webtoon.title }}
-                                </a>
-                            {% else %}
-                                -
-                            {% endif %}
-                        </td>
-                        <td>{{ log.get_status_display }}</td>
-                        <td>{{ log.start_time|date:"d.m.Y H:i" }}</td>
-                        <td>{% if log.end_time %}{{ log.end_time|date:"d.m.Y H:i" }}{% else %}-{% endif %}</td>
-                        <td>{{ log.imported_chapters }}</td>
-                        <td>{{ log.message|truncatechars:100 }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Kaynak</th>
+                            <th>Webtoon</th>
+                            <th>Durum</th>
+                            <th>Başlangıç</th>
+                            <th>Bitiş</th>
+                            <th>Bölümler</th>
+                            <th>Mesaj</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for log in recent_logs %}
+                        <tr class="log-item log-{{ log.status }}">
+                            <td>{{ log.source.name }}</td>
+                            <td>
+                                {% if log.imported_webtoon %}
+                                    <a href="{% url 'webtoons:admin_webtoon_detail' log.imported_webtoon.webtoon.slug %}">
+                                        {{ log.imported_webtoon.webtoon.title }}
+                                    </a>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>{{ log.get_status_display }}</td>
+                            <td>{{ log.start_time|date:"d.m.Y H:i" }}</td>
+                            <td>{% if log.end_time %}{{ log.end_time|date:"d.m.Y H:i" }}{% else %}-{% endif %}</td>
+                            <td>{{ log.imported_chapters }}</td>
+                            <td>{{ log.message|truncatechars:100 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% else %}
             <p>Henüz senkronizasyon işlemi yapılmadı.</p>
         {% endif %}

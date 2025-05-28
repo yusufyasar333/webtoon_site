@@ -1,0 +1,131 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+<script src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script>
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}
+<style type="text/css">
+  .form-row {
+    margin-bottom: 15px;
+  }
+  .form-help {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+  .import-notice {
+    background-color: #FFF8E1;
+    border-left: 4px solid #FFB300;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+  }
+  .source-info {
+    margin-top: 10px;
+    padding: 10px;
+    display: none;
+  }
+  .source-info.valid {
+    background-color: #E8F5E9;
+    border-left: 4px solid #4CAF50;
+  }
+  .source-info.invalid {
+    background-color: #FFEBEE;
+    border-left: 4px solid #F44336;
+  }
+</style>
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+  &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+  &rsaquo; <a href="{% url 'admin:webtoons_importedwebtoon_changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+  &rsaquo; {% trans 'Webtoon İçeri Aktar' %}
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+  <h1>Webtoon İçeri Aktar</h1>
+  
+  <div class="import-notice">
+    <h3>İçeri Aktarma Hakkında</h3>
+    <p>Bu sayfa, MangaZure ve MangaDex sitelerinden webtoon içeriğini içeri aktarmanızı sağlar. İçeri aktarma işlemi, web sitesi yapısına bağlı olarak uzun sürebilir.</p>
+    <p><strong>Desteklenen Siteler:</strong></p>
+    <ul>
+      <li><strong>MangaZure:</strong> https://mangazure.net/manga/[manga-adı]</li>
+      <li><strong>MangaDex:</strong> https://mangadex.org/title/[manga-id]</li>
+    </ul>
+  </div>
+
+  <form method="post" id="import-form">
+    {% csrf_token %}
+
+    <fieldset class="module aligned">
+      <div class="form-row">
+        <div>
+          <label for="{{ form.source_url.id_for_label }}" class="required">{{ form.source_url.label }}:</label>
+          {{ form.source_url }}
+          <div class="form-help">{{ form.source_url.help_text }}</div>
+          {% if form.source_url.errors %}
+            <ul class="errorlist">
+              {% for error in form.source_url.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          <div id="source-info" class="source-info"></div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="{{ form.source_name.id_for_label }}">{{ form.source_name.label }}:</label>
+          {{ form.source_name }}
+          <div class="form-help">{{ form.source_name.help_text }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="{{ form.max_chapters.id_for_label }}">{{ form.max_chapters.label }}:</label>
+          {{ form.max_chapters }}
+          <div class="form-help">{{ form.max_chapters.help_text }}</div>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="submit-row">
+      <button type="button" id="check-button" class="button default">Kaynağı Kontrol Et</button>
+      <input type="submit" value="İçeri Aktar" class="default" />
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript">
+  (function($) {
+    $(document).ready(function() {
+      $('#check-button').click(function() {
+        var url = $('#{{ form.source_url.id_for_label }}').val();
+        if (!url) {
+          $('#source-info').removeClass('valid invalid').addClass('invalid').text('URL boş olamaz!').show();
+          return;
+        }
+        
+        // AJAX isteği
+        $.getJSON('{% url "webtoons:check_source" %}', { url: url }, function(data) {
+          if (data.valid) {
+            $('#source-info').removeClass('invalid').addClass('valid').html('<strong>Geçerli Kaynak:</strong> ' + data.message).show();
+          } else {
+            $('#source-info').removeClass('valid').addClass('invalid').html('<strong>Geçersiz Kaynak:</strong> ' + data.message).show();
+          }
+        }).fail(function() {
+          $('#source-info').removeClass('valid').addClass('invalid').text('Kaynak kontrolü sırasında bir hata oluştu.').show();
+        });
+      });
+    });
+  })(django.jQuery);
+</script>
+{% endblock %} 

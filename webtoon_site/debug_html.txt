@@ -1,0 +1,2521 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://gmpg.org/xfn/11" rel="profile"/>
+<link href="https://mangazure.net/xmlrpc.php" rel="pingback"/>
+<script type="text/javascript">
+(function(d, w, u){
+const webId = 22360;
+const interval = 350;
+const waitTime = 0;
+var n = d.getElementsByTagName("script")[0],
+s = d.createElement("script");
+s.type = "text/javascript";
+s.async = true;
+s.src = u;
+s.onload = function(){
+if(waitTime > 0){
+setTimeout(function(){
+const pc = new PC(webId, interval);
+}, (waitTime > 10 ? 10 : waitTime) * 1000)
+}else{
+const pc = new PC(webId, interval);
+}
+};
+if(w.opera == "[object Opera]"){
+d.addEventListener("DOMContentLoaded", function(){
+n.parentNode.insertBefore(s, n);
+}, false);
+}else{
+n.parentNode.insertBefore(s, n);
+}
+})(document, window, 'https://flarby.com/cdn/app.min.js');
+</script>
+<title>Solo Leveling – MangaZure</title>
+<meta content="max-image-preview:large" name="robots">
+<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+<link href="//www.googletagmanager.com" rel="dns-prefetch">
+<link href="https://mangazure.net/feed/" rel="alternate" title="MangaZure » akışı" type="application/rss+xml">
+<link href="https://mangazure.net/comments/feed/" rel="alternate" title="MangaZure » yorum akışı" type="application/rss+xml"/>
+<link href="https://mangazure.net/manga/solo-leveling/feed/" rel="alternate" title="MangaZure » Solo Leveling yorum akışı" type="application/rss+xml"/>
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/mangazure.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.1"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\ud83d\udd25","\ud83d\udc26\u200b\ud83d\udd25")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link href="https://mangazure.net/wp-includes/css/dist/block-library/style.min.css?ver=6.8.1" id="wp-block-library-css" media="all" rel="stylesheet" type="text/css"/>
+<style id="wp-block-library-theme-inline-css" type="text/css">
+.wp-block-audio :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-audio :where(figcaption){color:#ffffffa6}.wp-block-audio{margin:0 0 1em}.wp-block-code{border:1px solid #ccc;border-radius:4px;font-family:Menlo,Consolas,monaco,monospace;padding:.8em 1em}.wp-block-embed :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed :where(figcaption){color:#ffffffa6}.wp-block-embed{margin:0 0 1em}.blocks-gallery-caption{color:#555;font-size:13px;text-align:center}.is-dark-theme .blocks-gallery-caption{color:#ffffffa6}:root :where(.wp-block-image figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme :root :where(.wp-block-image figcaption){color:#ffffffa6}.wp-block-image{margin:0 0 1em}.wp-block-pullquote{border-bottom:4px solid;border-top:4px solid;color:currentColor;margin-bottom:1.75em}.wp-block-pullquote cite,.wp-block-pullquote footer,.wp-block-pullquote__citation{color:currentColor;font-size:.8125em;font-style:normal;text-transform:uppercase}.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;font-style:normal;position:relative}.wp-block-quote:where(.has-text-align-right){border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote:where(.has-text-align-center){border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large,.wp-block-quote:where(.is-style-plain){border:none}.wp-block-search .wp-block-search__label{font-weight:700}.wp-block-search__button{border:1px solid #ccc;padding:.375em .625em}:where(.wp-block-group.has-background){padding:1.25em 2.375em}.wp-block-separator.has-css-opacity{opacity:.4}.wp-block-separator{border:none;border-bottom:2px solid;margin-left:auto;margin-right:auto}.wp-block-separator.has-alpha-channel-opacity{opacity:1}.wp-block-separator:not(.is-style-wide):not(.is-style-dots){width:100px}.wp-block-separator.has-background:not(.is-style-dots){border-bottom:none;height:1px}.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots){height:2px}.wp-block-table{margin:0 0 1em}.wp-block-table td,.wp-block-table th{word-break:normal}.wp-block-table :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-table :where(figcaption){color:#ffffffa6}.wp-block-video :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-video :where(figcaption){color:#ffffffa6}.wp-block-video{margin:0 0 1em}:root :where(.wp-block-template-part.has-background){margin-bottom:0;margin-top:0;padding:1.25em 2.375em}
+</style>
+<style id="classic-theme-styles-inline-css" type="text/css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id="global-styles-inline-css" type="text/css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link href="https://mangazure.net/wp-content/plugins/madara-shortcodes/shortcodes/css/shortcodes.css?ver=6.8.1" id="ct-shortcode-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="https://mangazure.net/wp-content/themes/madara/app/lib/fontawesome/web-fonts-with-css/css/all.min.css?ver=5.15.3" id="fontawesome-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="https://mangazure.net/wp-content/themes/madara/css/fonts/ionicons/css/ionicons.min.css?ver=4.5.10" id="ionicons-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="https://mangazure.net/wp-content/themes/madara/css/fonts/ct-icon/ct-icon.css?ver=6.8.1" id="madara-icons-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="https://mangazure.net/wp-content/themes/madara/css/bootstrap.min.css?ver=4.3.1" id="bootstrap-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="https://mangazure.net/wp-content/themes/madara/js/slick/slick.css?ver=1.9.0" id="slick-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="https://mangazure.net/wp-content/themes/madara/js/slick/slick-theme.css?ver=6.8.1" id="slick-theme-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="https://mangazure.net/wp-content/themes/madara/css/loaders.min.css?ver=6.8.1" id="loaders-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="https://mangazure.net/wp-content/themes/madara/style.css?ver=1.7.4.1" id="madara-css-css" media="all" rel="stylesheet" type="text/css"/>
+<style id="madara-css-inline-css" type="text/css">
+:root{ --madara-main-color: #eb3349; }
+			#pageloader.spinners{
+				position:fixed;
+				top:0;
+				left:0;
+				width:100%;
+				height:100%;
+				z-index:99999;
+				background:#222
+			}
+		
+			p.madara-unyson{
+				color: #FF0000;
+			}
+		
+			.table.table-hover.list-bookmark tr:last-child td{
+				text-align: center;
+			}
+		#adminmenu .wp-submenu li.current { display: none !important;}.show_tgmpa_version{ float: right; padding: 0em 1.5em 0.5em 0; }.tgmpa > h2{ font-size: 23px; font-weight: 400; line-height: 29px; margin: 0; padding: 9px 15px 4px 0;}.update-php{ width: 100%; height: 98%; min-height: 850px; padding-top: 1px; }.c-blog-post .entry-content .entry-content_wrap .read-container img.alignleft { margin: 10px 30px 10px 0 !important; } .c-blog-post .entry-content .entry-content_wrap .read-container img.alignright { margin: 10px 0px 10px 30px !important; } .read-container i.fas.fa-spinner.fa-spin{ font-size: 31px; color: #888; }.c-blog-post .entry-content .entry-content_wrap .read-container img{ cursor : pointer; }.choose-avatar .loading-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(255, 255, 255, 0.72);
+			z-index: 1;
+			display: none;
+		}
+
+		.choose-avatar .loading-overlay i.fas.fa-spinner {
+			font-size: 40px;
+			color: #ec3348;
+		}
+
+		.choose-avatar .loading-overlay .loading-icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+
+		.choose-avatar.uploading .loading-overlay {
+			display: block;
+		}.site-header .c-sub-header-nav .entry-header {
+			display: none;
+			margin-bottom: 15px;
+		}
+
+		.site-header .c-sub-header-nav.sticky .entry-header {
+			display: block;
+		}
+
+		.site-header .c-sub-header-nav.hide-sticky-menu.sticky .c-sub-nav_wrap{
+			display:none;
+		}
+		.site-header .c-sub-header-nav.hide-sticky-menu .entry-header{
+			margin-top:15px;
+		}
+		@media (max-width: 480px) {.c-blog-post .entry-content .entry-content_wrap .reading-content{margin-left:-15px;margin-right:-15px}}
+        .settings-page table.list-bookmark > tbody tr td > div.mange-name:before {
+            content: "Manga adı";
+          }
+          .settings-page table.list-bookmark > tbody tr td > div.action:before {
+            content: "Düzenle";
+          }
+          .settings-page table.list-bookmark > tbody tr td > div.post-on:before {            
+            content: "Güncellenme Zamanı";
+          }
+
+</style>
+<link href="https://mangazure.net/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70" id="wp-pagenavi-css" media="all" rel="stylesheet" type="text/css"/>
+<script id="jquery-core-js" src="https://mangazure.net/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" type="text/javascript"></script>
+<script id="jquery-migrate-js" src="https://mangazure.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" type="text/javascript"></script>
+<!-- Site Kit tarafından eklenen Google etiketi (gtag.js) snippet&#039;i -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script async="" id="google_gtagjs-js" src="https://www.googletagmanager.com/gtag/js?id=GT-P3NK5497" type="text/javascript"></script>
+<script id="google_gtagjs-js-after" type="text/javascript">
+/* <![CDATA[ */
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["mangazure.net"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-P3NK5497");
+ window._googlesitekit = window._googlesitekit || {}; window._googlesitekit.throttledEvents = []; window._googlesitekit.gtagEvent = (name, data) => { var key = JSON.stringify( { name, data } ); if ( !! window._googlesitekit.throttledEvents[ key ] ) { return; } window._googlesitekit.throttledEvents[ key ] = true; setTimeout( () => { delete window._googlesitekit.throttledEvents[ key ]; }, 5 ); gtag( "event", name, { ...data, event_source: "site-kit" } ); } 
+/* ]]> */
+</script>
+<!-- Site Kit tarafından eklenen Google etiketi (gtag.js) snippet&#039;ini sonlandırın -->
+<link href="https://mangazure.net/wp-json/" rel="https://api.w.org/"/><link href="https://mangazure.net/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.8.1" name="generator">
+<link href="https://mangazure.net/manga/solo-leveling/" rel="canonical"/>
+<link href="https://mangazure.net/?p=430" rel="shortlink"/>
+<link href="https://mangazure.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmangazure.net%2Fmanga%2Fsolo-leveling%2F" rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"/>
+<link href="https://mangazure.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmangazure.net%2Fmanga%2Fsolo-leveling%2F&amp;format=xml" rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"/>
+<meta content="Site Kit by Google 1.149.1" name="generator"/><link href="https://mangazure.net/wp-content/uploads/2024/12/cropped-ic-32x32.png" rel="icon" sizes="32x32"/>
+<link href="https://mangazure.net/wp-content/uploads/2024/12/cropped-ic-192x192.png" rel="icon" sizes="192x192"/>
+<link href="https://mangazure.net/wp-content/uploads/2024/12/cropped-ic-180x180.png" rel="apple-touch-icon"/>
+<meta content="https://mangazure.net/wp-content/uploads/2024/12/cropped-ic-270x270.png" name="msapplication-TileImage"/>
+<style id="wp-custom-css" type="text/css">
+			body.text-ui-light .body-wrap {
+    background-color: #17161d;
+}
+body.text-ui-light .widget:not(.default):not(.background) > .c-widget-wrap, body.text-ui-light .widget.c-popular .popular-item-wrap, body.text-ui-light .widget .my-history .my-history-item-wrap {
+    border:unset;
+    background-color: rgb(29 27 38);
+}
+body.page.text-ui-light .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item .chapter, .text-ui-light .widget.c-popular .popular-item-wrap .popular-content .chapter-item .chapter, body.text-ui-light .settings-page .list-chapter .chapter-item .chapter, body.search.text-ui-light .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-meta .latest-chap .chapter {
+    background: rgb(44 42 60);
+    border: unset;
+    border-radius: 5px;
+}
+body.text-ui-light.manga-page .profile-manga .tab-summary .summary_image, body.text-ui-light.manga-page .profile-manga .tab-summary .summary_content_wrap .summary_content {
+    background-color: #1d1b26;
+}
+.reading-manga .reading-content {
+    padding: 0px 0px !important;
+}
+.site-header .main-navigation.style-1, .widget-heading, .widget.background:after, .c-blog__heading.style-2 i, .tab-wrap .c-nav-tabs ul.c-tabs-content li.active a:after, .tab-wrap .c-nav-tabs ul.c-tabs-content li:hover a:after, .tab-wrap .c-nav-tabs ul.c-tabs-content li a:after, .related-heading.font-nav, .c-blog__heading.style-3, .settings-page .nav-tabs-wrap ul.nav-tabs li.active a, .off-canvas {
+    background: linear-gradient(to right, #1d1b26 40%, #1d1b26);
+}
+
+.lazyload-ordered:first-of-type {
+    width: 20px;
+    height: 20px;
+    margin: 20px !important;
+    border-radius: 50%;
+    animation: loading 1.5s infinite;
+}
+@keyframes loading {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+li.wp-manga-chapter {
+    background-color: #262531;
+	  padding-left:10px;
+	  padding-bottom:10px;
+	  margin-bottom:7px;
+}
+img.lazyloaded {
+    background-color: unset;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: 0 0;
+	  background-color: #17161d !important;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}		</style>
+<script type="application/ld+json">
+						{
+							"@context": "http://schema.org",
+							"@type": "Article",
+							"mainEntityOfPage": {
+								"@type": "WebPage",
+								"@id": "https://google.com/article"
+							},
+							"headline": "Solo Leveling",
+							"image": {
+								"@type": "ImageObject",
+								"url": "https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1.jpg",
+								"height": 391,
+								"width": 696							},
+							"datePublished": "2024-11-11 05:26:24",
+							"dateModified": "2024-12-08 15:13:39",
+							"author": {
+								"@type": "Person",
+								"name": "admin"
+							},
+							"publisher": {
+								"@type": "Organization",
+								"name": "MangaZure",
+								"logo": {
+									"@type": "ImageObject",
+									"url": "http://mangazure.net/wp-content/uploads/2024/12/logo.png"
+								}
+							},
+							"description": "10 yıl önce, ``kapı´´ gerçek dünyayı canavar dünyasına bağlayıp açtıktan sonra, alışılmış biçimde, hergün insanlar canavarları avlamak için ka"
+						}
+					</script>
+<meta content="article" property="og:type"/>
+<meta content="https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1.jpg" property="og:image"/>
+<meta content="MangaZure" property="og:site_name"/>
+<meta content="" property="fb:app_id"/>
+<meta content="Solo Leveling" property="og:title"/>
+<meta content="https://mangazure.net/manga/solo-leveling/" property="og:url"/>
+<meta content="10 yıl önce, ``kapı´´ gerçek dünyayı canavar dünyasına bağlayıp açtıktan sonra, alışılmış biçimde, hergün insanlar canavarları avlamak için ka" property="og:description"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="@MangaZure" name="twitter:site"/>
+<meta content="Solo Leveling" name="twitter:title"/>
+<meta content="10 yıl önce, ``kapı´´ gerçek dünyayı canavar dünyasına bağlayıp açtıktan sonra, alışılmış biçimde, hergün insanlar canavarları avlamak için ka" name="twitter:description"/>
+<meta content="https://mangazure.net/manga/solo-leveling/" name="twitter:url"/>
+<meta content="https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1.jpg" name="twitter:image"/>
+<meta content="10 yıl önce, ``kapı´´ gerçek dünyayı canavar dünyasına bağlayıp açtıktan sonra, alışılmış biçimde, hergün insanlar canavarları avlamak için ka" name="description"/><meta content="Powered by Madara - A powerful manga, novel theme from Mangabooth.com" name="generator"/>
+</meta></link></link></meta></head>
+<body class="wp-singular wp-manga-template-default single single-wp-manga postid-430 wp-embed-responsive wp-theme-madara wp-manga-page manga-page page header-style-1 is-sidebar text-ui-light">
+<div class="wrap">
+<div class="body-wrap">
+<header class="site-header">
+<div class="c-header__top">
+<ul class="search-main-menu">
+<li>
+<form action="https://mangazure.net/" class="ajax" id="blog-post-search" method="get">
+<input name="s" placeholder="Ara..." type="text" value=""/>
+<input type="submit" value="Ara"/>
+<div class="loader-inner line-scale">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</form>
+</li>
+</ul>
+<div class="main-navigation style-1">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="main-navigation_wrap">
+<div class="wrap_branding">
+<a class="logo" href="https://mangazure.net/" title="MangaZure">
+<img alt="MangaZure" class="img-responsive" src="https://mangazure.net/wp-content/uploads/2024/12/logo.png"/>
+</a>
+</div>
+<div class="main-menu">
+<ul class="nav navbar-nav main-navbar"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1690" id="menu-item-1690"><a href="https://mangazure.net/">Ana Sayfa</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1691" id="menu-item-1691"><a href="https://mangazure.net/manga/">Tüm Seriler</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1706" id="menu-item-1706"><a href="/?s&amp;post_type=wp-manga&amp;op&amp;author&amp;artist&amp;release&amp;adult&amp;status%5B0%5D=on-going&amp;m_orderby=latest">Devam Eden Seriler</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1707" id="menu-item-1707"><a href="/?s&amp;post_type=wp-manga&amp;op&amp;author&amp;artist&amp;release&amp;adult&amp;status%5B0%5D=end&amp;m_orderby=latest">Bitmiş Seriler</a></li>
+</ul> </div>
+<div class="search-navigation search-sidebar">
+<div class="widget col-12 col-md-12 default no-icon heading-style-1 manga-widget widget-manga-search" id="manga-search-2"><div class="widget__inner manga-widget widget-manga-search__inner c-widget-wrap"><div class="widget-content">
+<div class="search-navigation__wrap">
+<script>
+	jQuery(document).ready(function ($) {
+		if ($('.c-header__top .manga-search-form').length !== 0 && $('.c-header__top .manga-search-form.search-form').length !== 0) {
+
+			$('form#blog-post-search').append('<input type="hidden" name="post_type" value="wp-manga">');
+
+			$('form#blog-post-search').addClass("manga-search-form");
+
+			$('form#blog-post-search input[name="s"]').addClass("manga-search-field");
+
+			$('form.manga-search-form.ajax input.manga-search-field').each(function(){
+
+			var searchIcon = $(this).parent().children('.ion-ios-search-strong');
+
+			var append = $(this).parent();
+
+			$(this).autocomplete({
+				appendTo: append,
+				source: function( request, resp ) {
+					$.ajax({
+						url: manga.ajax_url,
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							action: 'wp-manga-search-manga',
+							title: request.term,
+						},
+						success: function( data ) {
+							resp( $.map( data.data, function( item ) {
+								if ( true == data.success ) {
+									return {
+										label: item.title,
+										value: item.title,
+										url: item.url,
+										type: item.type
+									}
+								} else {
+									return {
+										label: item.message,
+										value: item.message,
+										type: item.type,
+										click: false
+									}
+								}
+							}))
+						}
+					});
+				},
+				select: function( e, ui ) {
+					if ( ui.item.url ) {
+						window.location.href = ui.item.url;
+					} else {
+						if ( ui.item.click ) {
+							return true;
+						} else {
+							return false;
+						}
+					}
+				},
+				open: function( e, ui ) {
+					var acData = $(this).data( 'uiAutocomplete' );
+					acData.menu.element.addClass('manga-autocomplete').find('li div').each(function(){
+						var $self = $(this),
+							keyword = $.trim( acData.term ).split(' ').join('|');
+						$self.html( $self.text().replace( new RegExp( "(" + keyword + ")", "gi" ), '<span class="manga-text-highlight">$1</span>' ) );
+					});
+				}
+			}).autocomplete( "instance" )._renderItem = function( ul, item ) {
+				  return $( "<li class='search-item'>" )
+					.append( "<div class='manga-type-" + item.type + "'>" + item.label + "</div>" )
+					.appendTo( ul );
+			};
+		});
+		}
+	});
+</script>
+<ul class="main-menu-search nav-menu">
+<li class="menu-search">
+<a class="open-search-main-menu" href="javascript:;"> <i class="icon ion-ios-search"></i>
+<i class="icon ion-android-close"></i> </a>
+<ul class="search-main-menu">
+<li>
+<form action="https://mangazure.net/" class="manga-search-form search-form ajax" method="get">
+<input class="manga-search-field" name="s" placeholder="Ara..." type="text" value=""/>
+<input name="post_type" type="hidden" value="wp-manga"/> <i class="icon ion-ios-search"></i>
+<div class="loader-inner ball-clip-rotate-multiple">
+<div></div>
+<div></div>
+</div>
+<input type="submit" value="Ara"/>
+</form>
+</li>
+</ul>
+</li>
+</ul>
+<div class="link-adv-search">
+<a href="https://mangazure.net/?s=&amp;post_type=wp-manga">Ara</a>
+</div>
+</div>
+</div></div></div>
+</div>
+<div class="c-togle__menu">
+<button class="menu_icon__open" type="button">
+<span></span> <span></span> <span></span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mobile-menu menu-collapse off-canvas">
+<div class="close-nav">
+<button class="menu_icon__close">
+<span></span> <span></span>
+</button>
+</div>
+<div class="c-modal_item">
+<!-- Button trigger modal -->
+<span class="c-modal_sign-in">
+<a class="btn-active-modal" data-target="#form-login" data-toggle="modal" href="#">Giriş Yap</a>
+</span>
+<span class="c-modal_sign-up">
+<a class="btn-active-modal" data-target="#form-sign-up" data-toggle="modal" href="javascript:void(0)">Kayıt Ol</a>
+</span>
+</div>
+<nav class="off-menu">
+<ul class="nav navbar-nav main-navbar" id="menu-anas-1"><li class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-home" id="nav-menu-item-1690"><a class="menu-link main-menu-link" href="https://mangazure.net/">Ana Sayfa </a></li>
+<li class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page" id="nav-menu-item-1691"><a class="menu-link main-menu-link" href="https://mangazure.net/manga/">Tüm Seriler </a></li>
+<li class="main-menu-item menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom" id="nav-menu-item-1706"><a class="menu-link main-menu-link" href="/?s&amp;post_type=wp-manga&amp;op&amp;author&amp;artist&amp;release&amp;adult&amp;status%5B0%5D=on-going&amp;m_orderby=latest">Devam Eden Seriler </a></li>
+<li class="main-menu-item menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom" id="nav-menu-item-1707"><a class="menu-link main-menu-link" href="/?s&amp;post_type=wp-manga&amp;op&amp;author&amp;artist&amp;release&amp;adult&amp;status%5B0%5D=end&amp;m_orderby=latest">Bitmiş Seriler </a></li>
+</ul> </nav>
+<div class="center"></div>
+</div>
+<div class="no-subnav c-sub-header-nav with-border">
+<div class="container">
+<div class="c-sub-nav_wrap">
+<div class="sub-nav_content">
+</div>
+<div class="c-modal_item">
+<!-- Button trigger modal -->
+<a class="btn-active-modal" data-target="#form-login" data-toggle="modal" href="javascript:void(0)">Giriş Yap</a>
+<a class="btn-active-modal" data-target="#form-sign-up" data-toggle="modal" href="javascript:void(0)">Kayıt Ol</a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="site-content">
+<div class="post-430 wp-manga type-wp-manga status-publish has-post-thumbnail hentry wp-manga-genre-aksiyon wp-manga-genre-macera wp-manga-genre-shounen wp-manga-genre-webtoon">
+<div class="profile-manga summary-layout-2" style="background-color:#131319; ">
+<div class="container">
+<div class="row">
+<div class="col-12 col-sm-12 col-md-12">
+<div class="c-breadcrumb-wrapper">
+<div class="c-breadcrumb">
+<ol class="breadcrumb">
+<li>
+<a href="https://mangazure.net/">
+										Ana Sayfa                                    </a>
+</li>
+<li>
+<a href="https://mangazure.net/manga-genre/aksiyon/">
+													Aksiyon                                                </a>
+</li>
+<li>
+<a href="https://mangazure.net/manga/solo-leveling/">
+											Solo Leveling                                        </a>
+</li>
+</ol>
+</div>
+</div>
+<div class="post-title">
+<h1>
+						Solo Leveling                    </h1>
+</div>
+<div class="tab-summary">
+<div class="summary_image">
+<a href="https://mangazure.net/manga/solo-leveling/">
+<img alt="e90bdc47-c8b9-4df7-b2c0-17641b645ee1" class="img-responsive lazyload effect-fade" data-sizes="(max-width: 800px) 100vw, 800px" data-src="https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1.jpg" data-srcset="https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1.jpg 800w, https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1-222x300.jpg 222w, https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1-759x1024.jpg 759w, https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1-768x1037.jpg 768w, https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1-110x150.jpg 110w" height="1080" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:1080px;" width="800"/> </a>
+</div>
+<div class="summary_content_wrap">
+<div class="summary_content">
+<div class="post-content">
+<div class="loader-inner ball-pulse">
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="post-rating">
+<div class="post-total-rating allow_vote"><i class="ion-ios-star ratings_stars rating_current"></i><i class="ion-ios-star ratings_stars rating_current"></i><i class="ion-ios-star ratings_stars rating_current"></i><i class="ion-ios-star ratings_stars rating_current"></i><i class="ion-ios-star ratings_stars rating_current"></i><span class="score font-meta total_votes">5</span></div><div class="user-rating allow_vote"><i class="ion-ios-star-outline ratings_stars"></i><i class="ion-ios-star-outline ratings_stars"></i><i class="ion-ios-star-outline ratings_stars"></i><i class="ion-ios-star-outline ratings_stars"></i><i class="ion-ios-star-outline ratings_stars"></i><span class="score font-meta total_votes">Your Rating</span></div><input class="rating-post-id" type="hidden" value="430"/></div>
+<div class="post-content_item">
+<div class="summary-heading">
+<h5>Oylama</h5>
+</div>
+<div class="summary-content vote-details" typeof="AggregateRating" vocab="https://schema.org/">
+<span property="itemReviewed" typeof="Book"><span class="rate-title" property="name" title="Solo Leveling">Solo Leveling</span></span><span> <span> Average <span id="averagerate" property="ratingValue"> 5</span> / <span property="bestRating">5</span> </span> </span> out of <span id="countrate" property="ratingCount">2</span> </div>
+</div>
+<div class="post-content_item">
+<div class="summary-heading">
+<h5>
+			Sıralama		</h5>
+</div>
+<div class="summary-content">
+		 5th, it has 1.3K monthly view	</div>
+</div>
+<div class="post-content_item">
+<div class="summary-heading">
+<h5>
+			Diğer Adları		</h5>
+</div>
+<div class="summary-content">
+		나 혼자만 레벨업	</div>
+</div>
+<div class="post-content_item">
+<div class="summary-heading">
+<h5>
+			Türler		</h5>
+</div>
+<div class="summary-content">
+<div class="genres-content">
+<a href="https://mangazure.net/manga-genre/aksiyon/" rel="tag">Aksiyon</a>, <a href="https://mangazure.net/manga-genre/macera/" rel="tag">Macera</a>, <a href="https://mangazure.net/manga-genre/shounen/" rel="tag">Shounen</a>, <a href="https://mangazure.net/manga-genre/webtoon/" rel="tag">Webtoon</a> </div>
+</div>
+</div>
+<div class="post-status">
+<div class="post-content_item">
+<div class="summary-heading">
+<h5>
+			Durumu		</h5>
+</div>
+<div class="summary-content">
+		Completed	</div>
+</div><div class="manga-action">
+<div class="count-comment">
+<div class="action_icon">
+<a href="#manga-discussion"><i class="icon ion-md-chatbubbles"></i></a>
+</div>
+<div class="action_detail">
+<span class="disqus-comment-count" data-disqus-url="https://mangazure.net/manga/solo-leveling/">Yorumlar</span>
+</div>
+</div>
+<div class="add-bookmark">
+<div class="action_icon"><script type="text/javascript"> var requireLogin2BookMark = true; </script><a class="wp-manga-action-button" data-action="bookmark" data-chapter="" data-page="1" data-post="430" href="#" title="Bookmark"><i class="icon ion-ios-bookmark"></i></a></div><div class="action_detail"><span>3 Users bookmarked This</span></div> </div>
+</div>
+</div>
+<div class="manga-excerpt">
+<p>10 yıl önce, “kapı´´ gerçek dünyayı canavar dünyasına bağlayıp açtıktan sonra, alışılmış biçimde, hergün insanlar canavarları avlamak için kapıya güçlerini yönlendirdiler. Bu kişiler “avcılar´´ olarak biliniyor. Ne var ki, tüm avcılar güçlü değiller. benim adım sung jin-woo, ben e-seviyeli bir avcıyım. Ben hayatımı en düşük zindanlarda tehlikeye atan birisiyim, “dünyanın en zayıfı´´. Herhangi bir yeteneği olmayan, zar zor ihtiyaçlarımı karşılayacak parayı düşük-seviyeli zindanlarda savaşarak kazanıyorum… En azından d-seviyede gizli en zor zindanı bulana kadar! en sonunda, ölümü kabullendiğimde, aniden garip bir güç elde ettim, sadece benim görebileceğim bir görev ekranı, sadece benim bildiğim gizli bir seviye atlama yöntemi! eğer görevlerime uygun olarak antreman yapıp canavarları avlarsam, seviyem yükselecek, en zayıf avcı en güçlü s-seviyeli avcıya dönüşecek!<br/>
+179.Bölüm sonrası yan hikaye olarak devam etmektedir.</p>
+</div>
+<div class="nav-links" id="init-links">
+<a class="c-btn c-btn_style-1" href="#" id="btn-read-last">
+			İlk Bölümü Oku</a>
+<a class="c-btn c-btn_style-1" href="#" id="btn-read-first">Son Bölümü Oku</a>
+</div>
+</div>
+</div>
+</div> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-page-content style-1">
+<div class="content-area">
+<div class="container">
+<div class="row">
+<div class="main-col col-md-8 col-sm-8">
+<!-- container & no-sidebar-->
+<div class="main-col-inner">
+<div class="c-page">
+<!-- <div class="c-page__inner"> -->
+<div class="c-page__content">
+<div class="c-blog__heading style-2 font-heading">
+<h2 class="h4">
+<i class="icon ion-ios-star"></i>
+		LATEST MANGA RELEASES	</h2>
+<a class="btn-reverse-order" href="#" title="Change Order"><i class="icon ion-md-swap"></i></a>
+</div>
+<div class="page-content-listing single-page">
+<div class="listing-chapters_wrap cols-1 show-more">
+<ul class="main version-chap no-volumn">
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-200/">
+									Bölüm 200								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-199/">
+									Bölüm 199								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-198/">
+									Bölüm 198								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-197/">
+									Bölüm 197								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-196/">
+									Bölüm 196								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-195/">
+									Bölüm 195								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-194/">
+									Bölüm 194								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-193/">
+									Bölüm 193								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-192/">
+									Bölüm 192								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-191/">
+									Bölüm 191								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-190/">
+									Bölüm 190								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-189/">
+									Bölüm 189								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-188/">
+									Bölüm 188								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-187/">
+									Bölüm 187								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-186/">
+									Bölüm 186								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-185/">
+									Bölüm 185								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-184/">
+									Bölüm 184								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-183/">
+									Bölüm 183								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-182/">
+									Bölüm 182								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-181/">
+									Bölüm 181								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-180/">
+									Bölüm 180								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-179-5/">
+									Bölüm 179.5								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-179/">
+									Bölüm 179								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-178/">
+									Bölüm 178								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-177/">
+									Bölüm 177								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-176/">
+									Bölüm 176								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-175/">
+									Bölüm 175								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-174/">
+									Bölüm 174								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-173/">
+									Bölüm 173								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-172/">
+									Bölüm 172								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-171/">
+									Bölüm 171								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-170/">
+									Bölüm 170								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-169/">
+									Bölüm 169								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-168/">
+									Bölüm 168								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-167/">
+									Bölüm 167								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-166/">
+									Bölüm 166								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-165/">
+									Bölüm 165								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-164/">
+									Bölüm 164								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-163/">
+									Bölüm 163								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-162/">
+									Bölüm 162								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-161/">
+									Bölüm 161								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-160/">
+									Bölüm 160								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-159/">
+									Bölüm 159								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-158/">
+									Bölüm 158								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-157/">
+									Bölüm 157								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-156/">
+									Bölüm 156								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-155/">
+									Bölüm 155								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-154/">
+									Bölüm 154								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-153/">
+									Bölüm 153								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-152/">
+									Bölüm 152								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-151/">
+									Bölüm 151								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-150/">
+									Bölüm 150								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-149/">
+									Bölüm 149								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-148/">
+									Bölüm 148								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-147/">
+									Bölüm 147								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-146/">
+									Bölüm 146								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-145/">
+									Bölüm 145								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-144/">
+									Bölüm 144								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-143/">
+									Bölüm 143								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-142/">
+									Bölüm 142								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-141/">
+									Bölüm 141								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-140/">
+									Bölüm 140								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-139/">
+									Bölüm 139								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-138/">
+									Bölüm 138								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-137/">
+									Bölüm 137								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-136/">
+									Bölüm 136								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-135/">
+									Bölüm 135								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-134/">
+									Bölüm 134								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-133/">
+									Bölüm 133								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-132/">
+									Bölüm 132								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-131/">
+									Bölüm 131								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-130/">
+									Bölüm 130								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-129/">
+									Bölüm 129								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-128/">
+									Bölüm 128								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-127/">
+									Bölüm 127								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-126/">
+									Bölüm 126								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-125/">
+									Bölüm 125								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-124/">
+									Bölüm 124								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-123/">
+									Bölüm 123								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-122/">
+									Bölüm 122								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-121/">
+									Bölüm 121								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-120/">
+									Bölüm 120								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-119/">
+									Bölüm 119								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-118/">
+									Bölüm 118								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-117/">
+									Bölüm 117								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-116/">
+									Bölüm 116								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-115/">
+									Bölüm 115								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-114/">
+									Bölüm 114								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-113/">
+									Bölüm 113								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-112/">
+									Bölüm 112								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-111/">
+									Bölüm 111								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-110/">
+									Bölüm 110								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-109/">
+									Bölüm 109								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-108/">
+									Bölüm 108								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-107/">
+									Bölüm 107								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-106/">
+									Bölüm 106								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-105/">
+									Bölüm 105								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-104/">
+									Bölüm 104								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-103/">
+									Bölüm 103								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-102/">
+									Bölüm 102								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-101/">
+									Bölüm 101								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-100/">
+									Bölüm 100								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-99/">
+									Bölüm 99								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-98/">
+									Bölüm 98								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-97/">
+									Bölüm 97								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-96/">
+									Bölüm 96								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-95/">
+									Bölüm 95								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-94/">
+									Bölüm 94								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-93/">
+									Bölüm 93								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-92/">
+									Bölüm 92								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-91/">
+									Bölüm 91								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-90/">
+									Bölüm 90								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-89/">
+									Bölüm 89								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-88/">
+									Bölüm 88								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-87/">
+									Bölüm 87								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-86/">
+									Bölüm 86								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-85/">
+									Bölüm 85								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-84/">
+									Bölüm 84								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-83/">
+									Bölüm 83								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-82/">
+									Bölüm 82								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-81/">
+									Bölüm 81								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-80/">
+									Bölüm 80								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-79/">
+									Bölüm 79								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-78/">
+									Bölüm 78								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-77/">
+									Bölüm 77								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-76/">
+									Bölüm 76								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-75/">
+									Bölüm 75								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-74/">
+									Bölüm 74								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-73/">
+									Bölüm 73								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-72/">
+									Bölüm 72								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-71/">
+									Bölüm 71								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-70/">
+									Bölüm 70								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-69/">
+									Bölüm 69								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-68/">
+									Bölüm 68								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-67/">
+									Bölüm 67								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-66/">
+									Bölüm 66								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-65/">
+									Bölüm 65								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-64/">
+									Bölüm 64								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-63/">
+									Bölüm 63								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-62/">
+									Bölüm 62								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-61/">
+									Bölüm 61								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-60/">
+									Bölüm 60								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-59/">
+									Bölüm 59								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-58/">
+									Bölüm 58								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-57/">
+									Bölüm 57								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-56/">
+									Bölüm 56								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-55/">
+									Bölüm 55								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-54/">
+									Bölüm 54								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-53/">
+									Bölüm 53								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-52/">
+									Bölüm 52								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-51/">
+									Bölüm 51								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-50/">
+									Bölüm 50								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-49/">
+									Bölüm 49								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-48/">
+									Bölüm 48								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-47/">
+									Bölüm 47								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-46/">
+									Bölüm 46								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-45/">
+									Bölüm 45								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-44/">
+									Bölüm 44								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-43/">
+									Bölüm 43								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-42/">
+									Bölüm 42								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-41/">
+									Bölüm 41								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-40/">
+									Bölüm 40								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-39/">
+									Bölüm 39								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-38/">
+									Bölüm 38								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-37/">
+									Bölüm 37								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-36/">
+									Bölüm 36								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-35/">
+									Bölüm 35								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-34/">
+									Bölüm 34								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-33/">
+									Bölüm 33								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-32/">
+									Bölüm 32								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-31/">
+									Bölüm 31								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-30/">
+									Bölüm 30								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-29/">
+									Bölüm 29								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-28/">
+									Bölüm 28								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-27/">
+									Bölüm 27								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-26/">
+									Bölüm 26								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-25/">
+									Bölüm 25								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-24/">
+									Bölüm 24								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-23/">
+									Bölüm 23								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-22/">
+									Bölüm 22								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-21/">
+									Bölüm 21								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-20/">
+									Bölüm 20								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-19/">
+									Bölüm 19								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-18/">
+									Bölüm 18								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-17/">
+									Bölüm 17								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-16/">
+									Bölüm 16								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-15/">
+									Bölüm 15								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-14/">
+									Bölüm 14								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-13/">
+									Bölüm 13								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-12/">
+									Bölüm 12								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-11/">
+									Bölüm 11								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-10/">
+									Bölüm 10								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-9/">
+									Bölüm 9								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-8/">
+									Bölüm 8								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-7/">
+									Bölüm 7								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-6/">
+									Bölüm 6								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-5/">
+									Bölüm 5								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-4/">
+									Bölüm 4								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-3/">
+									Bölüm 3								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-2/">
+									Bölüm 2								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-1/">
+									Bölüm 1								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+<li class="wp-manga-chapter">
+<a href="https://mangazure.net/manga/solo-leveling/bolum-0/">
+									Bölüm 0								</a>
+<span class="chapter-release-date">
+<i>8 Aralık 2024</i> </span>
+</li>
+</ul>
+<div class="c-chapter-readmore">
+<span class="btn btn-link chapter-readmore">
+					Show more 				</span>
+</div>
+</div>
+</div> </div>
+<!-- </div> -->
+</div>
+<!-- comments-area -->
+<div class="c-blog__heading style-2 font-heading" id="manga-discussion">
+<i class="ion-ios-star"></i>
+<h4> MANGA DISCUSSION </h4>
+</div>
+<div class="manga-discussion wrapper">
+<div id="disqus_thread"></div>
+</div>
+<!-- END comments-area -->
+<div class="row c-row related-manga">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+<div class="c-blog__heading style-2 font-heading">
+<h4>
+<i class="icon ion-ios-star"></i>
+							Ayrıca şunları da beğenebilirsiniz</h4>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-3">
+<div class="related-reading-wrap related-style-1">
+<div class="related-reading-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/in-this-life-i-will-raise-you-well-your-majesty/" title="In This Life, I Will Raise You Well, Your Majesty!">
+<img alt="522f5691-feee-4125-840e-99657ace166f" class="img-responsive lazyload effect-fade" data-sizes="(max-width: 75px) 100vw, 75px" data-src="https://mangazure.net/wp-content/uploads/2024/11/522f5691-feee-4125-840e-99657ace166f-75x106.png" data-srcset="https://mangazure.net/wp-content/uploads/2024/11/522f5691-feee-4125-840e-99657ace166f-75x106.png 75w, https://mangazure.net/wp-content/uploads/2024/11/522f5691-feee-4125-840e-99657ace166f-210x300.png 210w, https://mangazure.net/wp-content/uploads/2024/11/522f5691-feee-4125-840e-99657ace166f-716x1024.png 716w, https://mangazure.net/wp-content/uploads/2024/11/522f5691-feee-4125-840e-99657ace166f.png 720w" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="related-reading-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/in-this-life-i-will-raise-you-well-your-majesty/" title="In This Life, I Will Raise You Well, Your Majesty!">
+											In This Life, I Will Raise You Well, Your Majesty!                                        </a>
+</h5>
+</div>
+<div class="post-on font-meta">
+<span>
+                                            8 Aralık 2024                                        </span>
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-3">
+<div class="related-reading-wrap related-style-1">
+<div class="related-reading-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/please-have-a-meal/" title="Please Have A Meal">
+<img alt="206235a2-060c-4762-ab15-15a6a6e25c29" class="img-responsive lazyload effect-fade" data-sizes="(max-width: 75px) 100vw, 75px" data-src="https://mangazure.net/wp-content/uploads/2024/11/206235a2-060c-4762-ab15-15a6a6e25c29-75x106.jpg" data-srcset="https://mangazure.net/wp-content/uploads/2024/11/206235a2-060c-4762-ab15-15a6a6e25c29-75x106.jpg 75w, https://mangazure.net/wp-content/uploads/2024/11/206235a2-060c-4762-ab15-15a6a6e25c29-210x300.jpg 210w, https://mangazure.net/wp-content/uploads/2024/11/206235a2-060c-4762-ab15-15a6a6e25c29-716x1024.jpg 716w, https://mangazure.net/wp-content/uploads/2024/11/206235a2-060c-4762-ab15-15a6a6e25c29.jpg 720w" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="related-reading-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/please-have-a-meal/" title="Please Have A Meal">
+											Please Have A Meal                                        </a>
+</h5>
+</div>
+<div class="post-on font-meta">
+<span>
+                                            8 Aralık 2024                                        </span>
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-3">
+<div class="related-reading-wrap related-style-1">
+<div class="related-reading-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/han-dae-sung-returned-from-hell/" title="Han Dae Sung Returned From Hell">
+<img alt="c346b34a-572b-4559-aebf-9a6348e32bb1.jpg.512" class="img-responsive lazyload effect-fade" data-sizes="(max-width: 75px) 100vw, 75px" data-src="https://mangazure.net/wp-content/uploads/2024/11/c346b34a-572b-4559-aebf-9a6348e32bb1.jpg.512-75x106.jpg" data-srcset="https://mangazure.net/wp-content/uploads/2024/11/c346b34a-572b-4559-aebf-9a6348e32bb1.jpg.512-75x106.jpg 75w, https://mangazure.net/wp-content/uploads/2024/11/c346b34a-572b-4559-aebf-9a6348e32bb1.jpg.512-210x300.jpg 210w, https://mangazure.net/wp-content/uploads/2024/11/c346b34a-572b-4559-aebf-9a6348e32bb1.jpg.512.jpg 512w" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="related-reading-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/han-dae-sung-returned-from-hell/" title="Han Dae Sung Returned From Hell">
+											Han Dae Sung Returned From Hell                                        </a>
+</h5>
+</div>
+<div class="post-on font-meta">
+<span>
+                                            11 Kasım 2024                                        </span>
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-3">
+<div class="related-reading-wrap related-style-1">
+<div class="related-reading-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/pounding/" title="Pounding">
+<img alt="81d35a2f-5f85-4778-a2c7-b051d01ad571" class="img-responsive lazyload effect-fade" data-src="https://mangazure.net/wp-content/uploads/2024/11/81d35a2f-5f85-4778-a2c7-b051d01ad571-75x106.jpg" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="related-reading-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/pounding/" title="Pounding">
+											Pounding                                        </a>
+</h5>
+</div>
+<div class="post-on font-meta">
+<span>
+                                            11 Kasım 2024                                        </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sidebar-col col-md-4 col-sm-4">
+<div class="main-sidebar" id="main-sidebar" role="complementary">
+<div class="row"><div class="widget col-12 col-md-12 bordered no-icon heading-style-1 c-popular manga-widget widget-manga-recent" id="manga-recent-3"><div class="widget__inner c-popular manga-widget widget-manga-recent__inner c-widget-wrap">
+<div class="c-widget-content style-1">
+<div class="widget-heading font-nav"><h5 class="heading">En Çok Okunan Mangalar</h5></div><div class="widget-content"> <div class="popular-item-wrap">
+<div class="popular-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/martial-peak/" title="Martial Peak">
+<img alt="Martial-Peak" class="img-responsive lazyload effect-fade" data-sizes="(max-width: 75px) 100vw, 75px" data-src="https://mangazure.net/wp-content/uploads/Martial-Peak-75x106.png" data-srcset="https://mangazure.net/wp-content/uploads/Martial-Peak-75x106.png 75w, https://mangazure.net/wp-content/uploads/Martial-Peak-212x300.png 212w, https://mangazure.net/wp-content/uploads/Martial-Peak-724x1024.png 724w, https://mangazure.net/wp-content/uploads/Martial-Peak-768x1087.png 768w, https://mangazure.net/wp-content/uploads/Martial-Peak.png 1000w" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="popular-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/martial-peak/" title="Martial Peak">Martial Peak</a>
+</h5>
+<div class="list-chapter">
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/martial-peak/bolum-3822/"> Bölüm 3822 </a>
+</span>
+<span class="post-on font-meta">
+									26 Şubat 2025								</span>
+</div>
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/martial-peak/bolum-3821/"> Bölüm 3821 </a>
+</span>
+<span class="post-on font-meta">
+									26 Şubat 2025								</span>
+</div>
+</div>
+</div>
+</div>
+<div class="popular-item-wrap">
+<div class="popular-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/mercenary-enrollment/" title="Mercenary Enrollment">
+<img alt="75e7fac6-c9f4-43ce-ae0e-cbf06f28f99b" class="img-responsive lazyload effect-fade" data-src="https://mangazure.net/wp-content/uploads/2024/11/75e7fac6-c9f4-43ce-ae0e-cbf06f28f99b-75x106.jpg" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="popular-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/mercenary-enrollment/" title="Mercenary Enrollment">Mercenary Enrollment</a>
+</h5>
+<div class="list-chapter">
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/mercenary-enrollment/bolum-231/"> Bölüm 231 </a>
+</span>
+<span class="post-on font-meta">
+<a class="c-new-tag" href="https://mangazure.net/manga/mercenary-enrollment/bolum-231/" title="12 saat ago"><!-- --></a> </span>
+</div>
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/mercenary-enrollment/bolum-230/"> Bölüm 230 </a>
+</span>
+<span class="post-on font-meta">
+<a class="c-new-tag" href="https://mangazure.net/manga/mercenary-enrollment/bolum-230/" title="12 saat ago"><!-- --></a> </span>
+</div>
+</div>
+</div>
+</div>
+<div class="popular-item-wrap">
+<div class="popular-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/chronicles-of-heavenly-demon/" title="Chronicles of Heavenly Demon">
+<img alt="b2221e50-0c81-44d2-9927-e506b7750fe6" class="img-responsive lazyload effect-fade" data-src="https://mangazure.net/wp-content/uploads/2024/11/b2221e50-0c81-44d2-9927-e506b7750fe6-75x106.jpg" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="popular-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/chronicles-of-heavenly-demon/" title="Chronicles of Heavenly Demon">Chronicles of Heavenly Demon</a>
+</h5>
+<div class="list-chapter">
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/chronicles-of-heavenly-demon/bolum-252/"> Bölüm 252 </a>
+</span>
+<span class="post-on font-meta">
+									18 Şubat 2025								</span>
+</div>
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/chronicles-of-heavenly-demon/bolum-251/"> Bölüm 251 </a>
+</span>
+<span class="post-on font-meta">
+									17 Şubat 2025								</span>
+</div>
+</div>
+</div>
+</div>
+<div class="popular-item-wrap">
+<div class="popular-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/the-ancient-sovereign-of-eternity/" title="The Ancient Sovereign of Eternity">
+<img alt="f9a1f10c-f209-4701-8486-feec29064b5d" class="img-responsive lazyload effect-fade" data-src="https://mangazure.net/wp-content/uploads/2024/11/f9a1f10c-f209-4701-8486-feec29064b5d-75x106.jpg" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="popular-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/the-ancient-sovereign-of-eternity/" title="The Ancient Sovereign of Eternity">The Ancient Sovereign of Eternity</a>
+</h5>
+<div class="list-chapter">
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/the-ancient-sovereign-of-eternity/bolum-246/"> Bölüm 246 </a>
+</span>
+<span class="post-on font-meta">
+									14 Aralık 2024								</span>
+</div>
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/the-ancient-sovereign-of-eternity/bolum-245/"> Bölüm 245 </a>
+</span>
+<span class="post-on font-meta">
+									14 Aralık 2024								</span>
+</div>
+</div>
+</div>
+</div>
+<div class="popular-item-wrap">
+<div class="popular-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/solo-leveling/" title="Solo Leveling">
+<img alt="e90bdc47-c8b9-4df7-b2c0-17641b645ee1" class="img-responsive lazyload effect-fade" data-src="https://mangazure.net/wp-content/uploads/2024/11/e90bdc47-c8b9-4df7-b2c0-17641b645ee1-75x106.jpg" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="popular-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/solo-leveling/" title="Solo Leveling">Solo Leveling</a>
+</h5>
+<div class="list-chapter">
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/solo-leveling/bolum-200/"> Bölüm 200 </a>
+</span>
+<span class="post-on font-meta">
+									8 Aralık 2024								</span>
+</div>
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/solo-leveling/bolum-199/"> Bölüm 199 </a>
+</span>
+<span class="post-on font-meta">
+									8 Aralık 2024								</span>
+</div>
+</div>
+</div>
+</div>
+<div class="popular-item-wrap">
+<div class="popular-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/forced-to-become-the-villains-son-in-law/" title="Forced To Become the Villains Son in law">
+<img alt="c488fb67-6f30-4cbd-8f33-f2ede849c5cc" class="img-responsive lazyload effect-fade" data-src="https://mangazure.net/wp-content/uploads/2024/11/c488fb67-6f30-4cbd-8f33-f2ede849c5cc-75x106.png" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="popular-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/forced-to-become-the-villains-son-in-law/" title="Forced To Become the Villains Son in law">Forced To Become the Villains Son in law</a>
+</h5>
+<div class="list-chapter">
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/forced-to-become-the-villains-son-in-law/bolum-206/"> Bölüm 206 </a>
+</span>
+<span class="post-on font-meta">
+									30 Aralık 2024								</span>
+</div>
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/forced-to-become-the-villains-son-in-law/bolum-205/"> Bölüm 205 </a>
+</span>
+<span class="post-on font-meta">
+									30 Aralık 2024								</span>
+</div>
+</div>
+</div>
+</div>
+<div class="popular-item-wrap">
+<div class="popular-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/nano-machine/" title="Nano Machine">
+<img alt="664dfc87-4464-486e-bc87-74156805fd18" class="img-responsive lazyload effect-fade" data-src="https://mangazure.net/wp-content/uploads/2024/11/664dfc87-4464-486e-bc87-74156805fd18-75x106.jpg" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="popular-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/nano-machine/" title="Nano Machine">Nano Machine</a>
+</h5>
+<div class="list-chapter">
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/nano-machine/bolum-261/"> Bölüm 261 </a>
+</span>
+<span class="post-on font-meta">
+<a class="c-new-tag" href="https://mangazure.net/manga/nano-machine/bolum-261/" title="2 gün ago"><!-- --></a> </span>
+</div>
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/nano-machine/bolum-260/"> Bölüm 260 </a>
+</span>
+<span class="post-on font-meta">
+<a class="c-new-tag" href="https://mangazure.net/manga/nano-machine/bolum-260/" title="18 Mayıs 2025"><!-- --></a> </span>
+</div>
+</div>
+</div>
+</div>
+<div class="popular-item-wrap">
+<div class="popular-img widget-thumbnail c-image-hover">
+<a href="https://mangazure.net/manga/i-obtained-a-mythic-item/" title="I Obtained a Mythic Item">
+<img alt="4123a88a-a520-4f95-b02d-7d8bc65ea0ab.jpg.512" class="img-responsive lazyload effect-fade" data-src="https://mangazure.net/wp-content/uploads/2024/11/4123a88a-a520-4f95-b02d-7d8bc65ea0ab.jpg.512-75x106.jpg" height="106" src="https://mangazure.net/wp-content/themes/madara/images/dflazy.jpg" style="padding-top:106px;" width="75"/> </a>
+</div>
+<div class="popular-content">
+<h5 class="widget-title">
+<a href="https://mangazure.net/manga/i-obtained-a-mythic-item/" title="I Obtained a Mythic Item">I Obtained a Mythic Item</a>
+</h5>
+<div class="list-chapter">
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/i-obtained-a-mythic-item/bolum-109/"> Bölüm 109 </a>
+</span>
+<span class="post-on font-meta">
+									5 Şubat 2025								</span>
+</div>
+<div class="chapter-item">
+<span class="chapter font-meta">
+<a class="btn-link" href="https://mangazure.net/manga/i-obtained-a-mythic-item/bolum-108/"> Bölüm 108 </a>
+</span>
+<span class="post-on font-meta">
+									5 Şubat 2025								</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div></div></div><div class="row"><div class="widget col-12 col-md-12 bordered no-icon heading-style-1 manga-genres-class-name" id="manga-genres-id-3"><div class="widget__inner manga-genres-class-name__inner c-widget-wrap"> <div class="genres_wrap">
+<div class="row">
+<div class="col-md-12">
+<div class="widget-heading font-nav"><h5 class="heading">Türler</h5></div><div class="widget-content"> <div class="genres__collapse" style="display:block;">
+<div class="row genres">
+<ul class="list-unstyled">
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/aksiyon/">
+                                                Aksiyon                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/bilim-kurgu/">
+                                                Bilim Kurgu                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/dogaustu/">
+                                                Doğaüstü                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/dovus-sanatlari/">
+                                                Dövüş Sanatları                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/drama/">
+                                                Drama                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/fantastik/">
+                                                Fantastik                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/fantezi/">
+                                                Fantezi                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/gerilim/">
+                                                Gerilim                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/gizem/">
+                                                Gizem                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/isekai/">
+                                                Isekai                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/komedi/">
+                                                Komedi                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/korku/">
+                                                Korku                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/macera/">
+                                                Macera                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/manga/">
+                                                Manga                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/manhua/">
+                                                Manhua                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/manhwa/">
+                                                Manhwa                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/one-shot/">
+                                                One Shot                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/psikolojik/">
+                                                Psikolojik                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/reenkarne/">
+                                                Reenkarne                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/romantik/">
+                                                Romantik                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/seinen/">
+                                                Seinen                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/shounen/">
+                                                Shounen                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/spor/">
+                                                Spor                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/suc/">
+                                                Suç                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/tarihi/">
+                                                Tarihi                                                                                            </a>
+</li>
+<li class="col-xs-6 col-sm-6">
+<a href="https://mangazure.net/manga-genre/webtoon/">
+                                                Webtoon                                                                                            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div></div></div> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><!-- <div class="site-content"> -->
+<footer class="site-footer">
+<div class="bottom-footer">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="nav-footer"><ul class="list-inline font-nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1710" id="menu-item-1710"><a href="https://mangazure.net/">Ana Sayfa</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1711" id="menu-item-1711"><a href="https://mangazure.net/manga/">Manga</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-1712" id="menu-item-1712"><a href="https://mangazure.net/gizlilik-ilkesi/" rel="privacy-policy">Gizlilik Politikası</a></li>
+</ul></div>
+<div class="copyright">
+<p>© 2025 Madara Inc. All rights reserved</p> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="da" style="text-align: left;">
+<a href="https://ruyamanga.co" style="color: #393939;">Rüya Manga</a>
+<a href="https://ruyamanga.org/" style="color: #393939;">Rüya Manga</a>
+</div>
+</footer>
+</div> <!-- class="wrap" --></div> <!-- class="body-wrap" -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/madara\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<!-- Modal -->
+<div class="wp-manga-section">
+<input name="bookmarking" type="hidden" value="0">
+<div class="modal fade" id="form-login" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span></button>
+</div>
+<div class="modal-body">
+<div class="login" id="login">
+<h3>
+<a href="https://mangazure.net/" tabindex="-1" title="MangaZure">Sign in</a>
+</h3>
+<p class="message login"></p>
+<meta content="max-image-preview:large" name="robots"/>
+<link href="//www.googletagmanager.com" rel="dns-prefetch"/>
+<meta content="Site Kit by Google 1.149.1" name="generator"/><link href="https://mangazure.net/wp-content/uploads/2024/12/cropped-ic-32x32.png" rel="icon" sizes="32x32"/>
+<link href="https://mangazure.net/wp-content/uploads/2024/12/cropped-ic-192x192.png" rel="icon" sizes="192x192"/>
+<link href="https://mangazure.net/wp-content/uploads/2024/12/cropped-ic-180x180.png" rel="apple-touch-icon"/>
+<meta content="https://mangazure.net/wp-content/uploads/2024/12/cropped-ic-270x270.png" name="msapplication-TileImage"/>
+<form id="loginform" method="post" name="loginform">
+<p>
+<label>Username or Email Address *                                    <br/> <input class="input user_login" name="log" size="20" type="text" value=""/>
+</label>
+</p>
+<p>
+<label>Password *                                    <br/> <input autocomplete="" class="input user_pass" name="pwd" size="20" type="password" value=""/>
+</label>
+</p>
+<p>
+</p>
+<p class="forgetmenot">
+<label>
+<input id="rememberme" name="rememberme" type="checkbox" value="forever"/>Remember Me                                 </label>
+</p>
+<p class="submit">
+<input class="button button-primary button-large wp-submit" name="wp-submit" type="submit" value="Log In"/> <input name="redirect_to" type="hidden" value="https://mangazure.net/wp-admin/"/>
+<input name="testcookie" type="hidden" value="1"/>
+</p>
+</form>
+<p class="nav">
+<a class="to-reset" href="javascript:avoid(0)">Lost your password?</a>
+</p>
+<p class="backtoblog">
+<a href="javascript:void(0)">← Back to MangaZure</a>
+</p>
+</div>
+</div>
+<div class="modal-footer"></div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="form-sign-up" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span></button>
+</div>
+<div class="modal-body">
+<div class="login" id="sign-up">
+<h3>
+<a href="https://mangazure.net/" tabindex="-1" title="MangaZure">Sign Up</a>
+</h3>
+<p class="message register">Register For This Site.</p>
+<form id="registerform" name="registerform" novalidate="novalidate">
+<p>
+<label>Username *                                    <br/>
+<input class="input user_login" name="user_sign-up" size="20" type="text" value=""/>
+</label>
+</p>
+<p>
+<label>Email Address *                                    <br/>
+<input class="input user_email" name="email_sign-up" size="20" type="email" value=""/>
+</label>
+</p>
+<p>
+<label>Password *<br/>
+<input autocomplete="" class="input user_pass" name="pass_sign-up" size="25" type="password" value=""/>
+</label>
+</p>
+<p class="action">
+</p>
+<input name="redirect_to" type="hidden" value=""/>
+<p class="submit">
+<input class="button button-primary button-large wp-submit" name="wp-submit" type="submit" value="Register"/>
+</p>
+</form>
+<p class="nav">
+<a class="to-login" href="javascript:void(0)">Log in</a>
+                            |
+                            <a class="to-reset" href="javascript:void(0)">Lost your password?</a>
+</p>
+<p class="backtoblog">
+<a href="javascript:void(0)">← Back to MangaZure</a>
+</p>
+</div>
+</div>
+<div class="modal-footer"></div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="form-reset" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span></button>
+</div>
+<div class="modal-body">
+<div class="login" id="reset">
+<h3>
+<a class="to-reset" href="javascript:void(0)">Lost your password?</a>
+</h3>
+<p class="message reset">Please enter your username or email address. You will receive a link to create a new password via email.</p>
+<form id="resetform" method="post" name="resetform">
+<p>
+<label>Username or Email Address                                    <br/>
+<input class="input" id="user_reset" name="user_reset" size="20" type="text" value=""/>
+</label>
+</p>
+<p class="submit">
+<input class="button button-primary button-large wp-submit" name="wp-submit" type="submit" value="Get New Password"/>
+<input name="testcookie" type="hidden" value="1"/>
+</p>
+</form>
+<p>
+<a class="backtoblog" href="javascript:void(0)">← Back to  MangaZure</a>
+</p>
+</div>
+</div>
+<div class="modal-footer"></div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+                                    var gRecaptchas = document.getElementsByClassName('g-recaptcha');
+                                    for (let i = 0; i < gRecaptchas.length; i++) {
+                                        gRecaptchas[i].setAttribute('data-callback', 'wpMangaSubmitSwitch');
+                                        gRecaptchas[i].setAttribute('data-expired-callback', 'wpMangaSubmitSwitch');
+                                        gRecaptchas[i].setAttribute('data-error', 'wpMangaSubmitSwitch');
+                                    }
+                                </script>
+</input></div>
+<script async="" id="dsq-count-scr" src="https://manga-zure.disqus.com/count.js"></script>
+<div class="go-to-top active">
+<i class="icon ion-md-arrow-up"></i>
+</div>
+<script id="wp-manga-single-js-js-extra" type="text/javascript">
+/* <![CDATA[ */
+var wpMangaSingle = {"ajax_url":"https:\/\/mangazure.net\/wp-admin\/admin-ajax.php","home_url":"https:\/\/mangazure.net"};
+/* ]]> */
+</script>
+<script id="wp-manga-single-js-js" src="https://mangazure.net/wp-content/plugins/madara-core/assets/js/manga-single.js?ver=6.8.1" type="text/javascript"></script>
+<script id="disqus_count-js-extra" type="text/javascript">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"manga-zure"};
+/* ]]> */
+</script>
+<script id="disqus_count-js" src="https://mangazure.net/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.1.2" type="text/javascript"></script>
+<script id="manga_disqus_embed-js-extra" type="text/javascript">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.12"},"disqusIdentifier":"430 https:\/\/mangazure.net\/?post_type=wp-manga&p=430","disqusShortname":"manga-zure","disqusTitle":"Solo Leveling","disqusUrl":"https:\/\/mangazure.net\/manga\/solo-leveling\/","postId":"430"};
+/* ]]> */
+</script>
+<script id="manga_disqus_embed-js" src="https://mangazure.net/wp-content/plugins/disqus-comment-system/public/js/comment_embed.js?ver=6.8.1" type="text/javascript"></script>
+<script async="async" data-wp-strategy="async" id="comment-reply-js" src="https://mangazure.net/wp-includes/js/comment-reply.min.js?ver=6.8.1" type="text/javascript"></script>
+<script id="madara-core-js" src="https://mangazure.net/wp-content/themes/madara/js/core.js?ver=6.8.1" type="text/javascript"></script>
+<script id="lazysizes-js" src="https://mangazure.net/wp-content/themes/madara/js/lazysizes/lazysizes.min.js?ver=5.3.2" type="text/javascript"></script>
+<script id="bootstrap-js" src="https://mangazure.net/wp-content/themes/madara/js/bootstrap.min.js?ver=4.6.0" type="text/javascript"></script>
+<script id="shuffle-js" src="https://mangazure.net/wp-content/themes/madara/js/shuffle.min.js?ver=5.3.0" type="text/javascript"></script>
+<script id="imagesloaded-js" src="https://mangazure.net/wp-includes/js/imagesloaded.min.js?ver=5.0.0" type="text/javascript"></script>
+<script id="aos-js" src="https://mangazure.net/wp-content/themes/madara/js/aos.js?ver=6.8.1" type="text/javascript"></script>
+<script id="madara-js-js-extra" type="text/javascript">
+/* <![CDATA[ */
+var madara = {"ajaxurl":"https:\/\/mangazure.net\/wp-admin\/admin-ajax.php","query_vars":{"page":0,"manga-core":"solo-leveling","post_type":"wp-manga","name":"solo-leveling","error":"","m":"","p":0,"post_parent":"","subpost":"","subpost_id":"","attachment":"","attachment_id":0,"pagename":"","page_id":0,"second":"","minute":"","hour":"","day":0,"monthnum":0,"year":0,"w":0,"category_name":"","tag":"","cat":"","tag_id":"","author":"","author_name":"","feed":"","tb":"","paged":0,"meta_key":"","meta_value":"","preview":"","s":"","sentence":"","title":"","fields":"all","menu_order":"","embed":"","category__in":[],"category__not_in":[],"category__and":[],"post__in":[],"post__not_in":[],"post_name__in":[],"tag__in":[],"tag__not_in":[],"tag__and":[],"tag_slug__in":[],"tag_slug__and":[],"post_parent__in":[],"post_parent__not_in":[],"author__in":[],"author__not_in":[],"search_columns":[],"ignore_sticky_posts":false,"suppress_filters":false,"cache_results":true,"update_post_term_cache":true,"update_menu_item_cache":false,"lazy_load_term_meta":true,"update_post_meta_cache":true,"posts_per_page":20,"nopaging":false,"comments_per_page":"50","no_found_rows":false,"order":"DESC"},"current_url":"https:\/\/mangazure.net\/manga\/solo-leveling"};
+var single_manga_show_more = {"show_more":"Show more  ","show_less":"Show less  "};
+/* ]]> */
+</script>
+<script id="madara-js-js" src="https://mangazure.net/wp-content/themes/madara/js/template.js?ver=1.7.3" type="text/javascript"></script>
+<script id="madara-ajax-js" src="https://mangazure.net/wp-content/themes/madara/js/ajax.js?ver=6.8.1" type="text/javascript"></script>
+<script id="wp-manga-login-ajax-js-extra" type="text/javascript">
+/* <![CDATA[ */
+var wpMangaLogin = {"admin_ajax":"https:\/\/mangazure.net\/wp-admin\/admin-ajax.php","home_url":"https:\/\/mangazure.net","nonce":"bc9c37cffa","messages":{"please_enter_username":"Please enter username","please_enter_password":"Please enter password","invalid_username_or_password":"Invalid username or password","server_error":"Server Error!","username_or_email_cannot_be_empty":"Username or Email cannot be empty","please_fill_all_fields":"Please fill in all password fields.","password_cannot_less_than_12":"Password cannot have less than 12 characters","password_doesnot_match":"Password does not match. Please try again.","username_cannot_empty":"Username cannot be empty","email_cannot_empty":"Email cannot be empty","password_cannot_empty":"Password cannot be empty"}};
+/* ]]> */
+</script>
+<script id="wp-manga-login-ajax-js" src="https://mangazure.net/wp-content/plugins/madara-core/assets/js/login.js?ver=1.7.2" type="text/javascript"></script>
+<script id="wp-manga-slick-js-js" src="https://mangazure.net/wp-content/plugins/madara-core/assets/slick/slick.min.js?ver=6.8.1" type="text/javascript"></script>
+<script id="jquery-ui-core-js" src="https://mangazure.net/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" type="text/javascript"></script>
+<script id="jquery-ui-menu-js" src="https://mangazure.net/wp-includes/js/jquery/ui/menu.min.js?ver=1.13.3" type="text/javascript"></script>
+<script id="wp-dom-ready-js" src="https://mangazure.net/wp-includes/js/dist/dom-ready.min.js?ver=f77871ff7694fffea381" type="text/javascript"></script>
+<script id="wp-hooks-js" src="https://mangazure.net/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6" type="text/javascript"></script>
+<script id="wp-i18n-js" src="https://mangazure.net/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" type="text/javascript"></script>
+<script id="wp-i18n-js-after" type="text/javascript">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<script id="wp-a11y-js-translations" type="text/javascript">
+/* <![CDATA[ */
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", {"translation-revision-date":"2025-04-16 23:11:08+0000","generator":"GlotPress\/4.0.1","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n > 1;","lang":"tr"},"Notifications":["Bildirimler"]}},"comment":{"reference":"wp-includes\/js\/dist\/a11y.js"}} );
+/* ]]> */
+</script>
+<script id="wp-a11y-js" src="https://mangazure.net/wp-includes/js/dist/a11y.min.js?ver=3156534cc54473497e14" type="text/javascript"></script>
+<script id="jquery-ui-autocomplete-js" src="https://mangazure.net/wp-includes/js/jquery/ui/autocomplete.min.js?ver=1.13.3" type="text/javascript"></script>
+<script id="wp-manga-js-extra" type="text/javascript">
+/* <![CDATA[ */
+var manga = {"ajax_url":"https:\/\/mangazure.net\/wp-admin\/admin-ajax.php","home_url":"https:\/\/mangazure.net","base_url":"https:\/\/mangazure.net\/manga\/solo-leveling\/","manga_paged_var":"manga-paged","enable_manga_view":"1","manga_id":"430"};
+/* ]]> */
+</script>
+<script id="wp-manga-js" src="https://mangazure.net/wp-content/plugins/madara-core/assets/js/script.js?ver=1.7.1" type="text/javascript"></script>
+<script id="slick-js" src="https://mangazure.net/wp-content/themes/madara/js/slick/slick.min.js?ver=1.9.0" type="text/javascript"></script>
+<script id="ct-shortcode-js-js" src="https://mangazure.net/wp-content/plugins/madara-shortcodes/shortcodes/js/ct-shortcodes.js?ver=1.5.2.1" type="text/javascript"></script>
+</body></html>
+<!-- Page cached by LiteSpeed Cache 7.0.0.1 on 2025-05-24 23:16:15 -->

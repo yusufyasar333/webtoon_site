@@ -1,7 +1,9 @@
-{% extends "admin/base_site.html" %}
+{% extends "webtoons/admin/base_admin.html" %}
 {% load static %}
 
-{% block extrastyle %}
+{% block title %}Webtoon İçeri Aktar - Yönetim Paneli{% endblock %}
+
+{% block style %}
 <style>
     .form-section {
         background-color: #fff;
@@ -15,14 +17,6 @@
         padding: 20px;
         border-radius: 4px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-    }
-    .btn-primary {
-        background-color: #447e9b;
-        border-color: #447e9b;
-    }
-    .btn-primary:hover {
-        background-color: #366b83;
-        border-color: #366b83;
     }
     .log-item {
         padding: 10px;
@@ -42,9 +36,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Webtoon İçeri Aktar</h1>
-    <p class="help">Bu sayfa, başka sitelerden webtoon içeriğini içeri aktarmanıza olanak tanır.</p>
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Webtoon İçeri Aktar</h1>
+                <a href="{% url 'webtoons:admin_dashboard' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Yönetim Paneline Dön
+                </a>
+            </div>
+            <p class="text-muted">Bu sayfa, başka sitelerden webtoon içeriğini içeri aktarmanıza olanak tanır.</p>
+            <hr>
+        </div>
+    </div>
     
     <div class="form-section">
         <h2>Yeni Webtoon İçeri Aktar</h2>
@@ -95,40 +99,42 @@
     <div class="logs-section">
         <h2>Son İçeri Aktarma İşlemleri</h2>
         {% if recent_logs %}
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Kaynak</th>
-                        <th>Webtoon</th>
-                        <th>Durum</th>
-                        <th>Başlangıç</th>
-                        <th>Bitiş</th>
-                        <th>Bölümler</th>
-                        <th>Mesaj</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for log in recent_logs %}
-                    <tr class="log-item log-{{ log.status }}">
-                        <td>{{ log.source.name }}</td>
-                        <td>
-                            {% if log.imported_webtoon %}
-                                <a href="{% url 'admin:webtoons_webtoon_change' log.imported_webtoon.webtoon.id %}">
-                                    {{ log.imported_webtoon.webtoon.title }}
-                                </a>
-                            {% else %}
-                                -
-                            {% endif %}
-                        </td>
-                        <td>{{ log.get_status_display }}</td>
-                        <td>{{ log.start_time|date:"d.m.Y H:i" }}</td>
-                        <td>{% if log.end_time %}{{ log.end_time|date:"d.m.Y H:i" }}{% else %}-{% endif %}</td>
-                        <td>{{ log.imported_chapters }}</td>
-                        <td>{{ log.message|truncatechars:100 }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Kaynak</th>
+                            <th>Webtoon</th>
+                            <th>Durum</th>
+                            <th>Başlangıç</th>
+                            <th>Bitiş</th>
+                            <th>Bölümler</th>
+                            <th>Mesaj</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for log in recent_logs %}
+                        <tr class="log-item log-{{ log.status }}">
+                            <td>{{ log.source.name }}</td>
+                            <td>
+                                {% if log.imported_webtoon %}
+                                    <a href="{% url 'webtoons:admin_webtoon_detail' log.imported_webtoon.webtoon.slug %}">
+                                        {{ log.imported_webtoon.webtoon.title }}
+                                    </a>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>{{ log.get_status_display }}</td>
+                            <td>{{ log.start_time|date:"d.m.Y H:i" }}</td>
+                            <td>{% if log.end_time %}{{ log.end_time|date:"d.m.Y H:i" }}{% else %}-{% endif %}</td>
+                            <td>{{ log.imported_chapters }}</td>
+                            <td>{{ log.message|truncatechars:100 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% else %}
             <p>Henüz içeri aktarma işlemi yapılmadı.</p>
         {% endif %}

@@ -1,17 +1,28 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from django.db.models import Avg, Count, Q
-from django.views.decorators.http import require_POST
-from django.core.paginator import Paginator
-from django.contrib import messages
-from django.contrib.auth.decorators import user_passes_test
-from django.contrib.auth.models import User
-from .models import Category, Webtoon, Chapter, Comment, Rating, Bookmark, ReadingHistory, WebtoonsView
-from .forms import WebtoonForm, ChapterForm, ChapterImageFormSet
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.http import JsonResponse, Http404
+from django.db.models import Avg, Count, F, Q
+from django.utils import timezone
 from django.utils.text import slugify
+from django.contrib import messages
+from django.views.decorators.http import require_POST
 from django.contrib.auth.forms import UserCreationForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.urls import reverse
+from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
+from .models import (
+    Category, Webtoon, Chapter, ChapterImage, Comment, Rating, Bookmark, ReadingHistory,
+    ExternalSource, ImportedWebtoon, ImportedChapter, ImportLog
+)
+from .forms import WebtoonForm, ChapterForm, ChapterImageFormSet, ImportWebtoonForm
+from .services import import_webtoon_from_source, sync_webtoon_chapters
+from .tasks import sync_webtoon, sync_all_auto_webtoons
+import logging
+import socket
+import datetime
+from django.core.management import call_command
+from io import StringIO
 
 def home(request):
     """Ana sayfa görünümü"""
@@ -120,32 +131,9 @@ def webtoon_detail(request, slug):
     webtoon = get_object_or_404(Webtoon, slug=slug, published=True)
     chapters = webtoon.chapters.filter(published=True).order_by('number')
     
-    # Görüntülenme sayısını artır - sadece yeni kullanıcı veya IP için
-    try:
-        if request.user.is_authenticated:
-            # Kullanıcı giriş yapmışsa, kullanıcıya göre kontrol et
-            view_obj, created = WebtoonsView.objects.get_or_create(
-                webtoon=webtoon,
-                user=request.user
-            )
-            if created:
-                webtoon.views += 1
-                webtoon.save()
-        else:
-            # Giriş yapmamış kullanıcılar için IP adresine göre kontrol et
-            ip_address = get_client_ip(request)
-            if ip_address:
-                view_obj, created = WebtoonsView.objects.get_or_create(
-                    webtoon=webtoon,
-                    ip_address=ip_address,
-                    user=None
-                )
-                if created:
-                    webtoon.views += 1
-                    webtoon.save()
-    except Exception as e:
-        # Hata durumunda sessizce devam et, görüntüleme sayısını güncelleme
-        print(f"Görüntüleme kaydı hatası: {e}")
+    # Görüntülenme sayısını artır
+    webtoon.views += 1
+    webtoon.save()
     
     # Ortalama puanı hesapla
     avg_rating = webtoon.ratings.aggregate(Avg('score'))['score__avg'] or 0
@@ -679,3 +667,260 @@ def register(request):
         'title': 'Kayıt Ol',
     }
     return render(request, 'webtoons/register.html', context)
+
+@user_passes_test(is_admin)
+def admin_import_webtoon(request):
+    """Webtoon içeri aktarma sayfası"""
+    if request.method == 'POST':
+        form = ImportWebtoonForm(request.POST)
+        if form.is_valid():
+            source_url = form.cleaned_data['source_url']
+            source_name = form.cleaned_data['source_name']
+            max_chapters = form.cleaned_data['max_chapters']
+            
+            # İçeri aktarma işlemini başlat
+            result = import_webtoon_from_source(
+                source_url=source_url,
+                source_name=source_name,
+                auto_sync=True,  # Sabit değer olarak True kullanıyoruz
+                max_chapters=max_chapters
+            )
+            
+            if result['success']:
+                messages.success(request, result['message'])
+                if 'imported_webtoon' in result and 'webtoon' in result:
+                    return redirect('webtoons:admin_webtoon_detail', slug=result['webtoon'].slug)
+                return redirect('webtoons:admin_webtoon_list')
+            else:
+                messages.error(request, result['message'])
+    else:
+        form = ImportWebtoonForm()
+    
+    # Son içeri aktarma loglarını göster
+    recent_logs = ImportLog.objects.all().order_by('-start_time')[:10]
+    
+    return render(request, 'webtoons/admin/import_webtoon.html', {
+        'form': form,
+        'recent_logs': recent_logs,
+        'title': 'Webtoon İçeri Aktar',
+    })
+
+@user_passes_test(is_admin)
+def admin_sync_webtoons(request):
+    """Webtoon senkronizasyon sayfası"""
+    # Logger'ı başlangıçta tanımla
+    logger = logging.getLogger(__name__)
+    
+    # Otomatik senkronizasyon açık olan webtoonları bul
+    auto_sync_webtoons = ImportedWebtoon.objects.filter(auto_sync=True)
+    
+    # Tüm içeri aktarılmış webtoonları bul
+    all_imported_webtoons = ImportedWebtoon.objects.all()
+    
+    # Aktif kaynakları bul
+    active_sources = ExternalSource.objects.filter(active=True)
+    
+    # Son senkronizasyon loglarını göster
+    recent_logs = ImportLog.objects.all().order_by('-start_time')[:10]
+    
+    # URL'den veya POST'tan gelen senkronizasyon işlemi
+    webtoon_id = request.POST.get('webtoon_id') or request.GET.get('webtoon_id')
+    max_chapters = request.POST.get('max_chapters') or request.GET.get('max_chapters')
+    
+    if webtoon_id:
+        try:
+            imported_webtoon = ImportedWebtoon.objects.get(id=webtoon_id)
+            
+            # Maksimum bölüm sayısını kontrol et
+            if max_chapters:
+                try:
+                    max_chapters = int(max_chapters)
+                    logger.info(f"Maksimum bölüm sayısı belirlendi: {max_chapters}")
+                except (ValueError, TypeError):
+                    max_chapters = None
+                    logger.warning(f"Geçersiz maksimum bölüm sayısı: {request.POST.get('max_chapters')}")
+            else:
+                max_chapters = None
+                logger.info("Maksimum bölüm sayısı belirtilmemiş, tüm bölümler çekilecek.")
+            
+            # Senkronizasyonu başlat
+            result = sync_webtoon_chapters(imported_webtoon, max_chapters)
+            
+            if result.get('success', False):
+                new_chapters = result.get('new_chapters', 0)
+                if new_chapters > 0:
+                    messages.success(request, f"{new_chapters} yeni bölüm senkronize edildi.")
+                else:
+                    messages.info(request, "Yeni bölüm bulunamadı.")
+            else:
+                messages.error(request, f"Senkronizasyon hatası: {result.get('message', 'Bilinmeyen hata')}")
+                
+            # Aynı sayfada kal
+            return redirect('webtoons:admin_sync_webtoons')
+        except ImportedWebtoon.DoesNotExist:
+            messages.error(request, "Belirtilen webtoon bulunamadı.")
+        except Exception as e:
+            import traceback
+            logger.error(f"Senkronizasyon hatası: {e}")
+            logger.error(traceback.format_exc())
+            messages.error(request, f"Senkronizasyon sırasında hata oluştu: {str(e)}")
+    
+    return render(request, 'webtoons/admin/sync_webtoons.html', {
+        'auto_sync_webtoons': auto_sync_webtoons,
+        'all_imported_webtoons': all_imported_webtoons,
+        'active_sources': active_sources,
+        'recent_logs': recent_logs,
+        'title': 'Webtoon Senkronizasyonu',
+    })
+
+@user_passes_test(is_admin)
+@require_POST
+def admin_sync_webtoon_ajax(request, webtoon_id):
+    """Belirli bir webtoon'u senkronize et (AJAX)"""
+    imported_webtoon = get_object_or_404(ImportedWebtoon, id=webtoon_id)
+    max_chapters = request.POST.get('max_chapters')
+    
+    if max_chapters and max_chapters.isdigit():
+        max_chapters = int(max_chapters)
+    else:
+        max_chapters = None
+    
+    # Asenkron görevi başlat
+    task = sync_webtoon.delay(webtoon_id, max_chapters)
+    
+    # Tarayıcıya hemen yanıt ver
+    return JsonResponse({
+        'success': True,
+        'message': 'Senkronizasyon görevi başlatıldı',
+        'task_id': task.id
+    })
+
+@user_passes_test(is_admin)
+@require_POST
+def admin_sync_all_webtoons_ajax(request):
+    """Otomatik senkronizasyon açık olan tüm webtoonları senkronize et (AJAX)"""
+    # Asenkron görevi başlat
+    task = sync_all_auto_webtoons.delay()
+    
+    # Tarayıcıya hemen yanıt ver
+    return JsonResponse({
+        'success': True,
+        'message': 'Tüm webtoonların senkronizasyon görevi başlatıldı',
+        'task_id': task.id
+    })
+
+# Admin kontrolü
+def is_staff(user):
+    return user.is_staff
+
+@login_required
+@user_passes_test(is_staff)
+def import_webtoon(request):
+    """Dışarıdan webtoon içeri aktarma sayfası"""
+    
+    if request.method == 'POST':
+        form = ImportWebtoonForm(request.POST)
+        if form.is_valid():
+            source_url = form.cleaned_data['source_url']
+            source_name = form.cleaned_data['source_name']
+            max_chapters = form.cleaned_data['max_chapters']
+            
+            # İçeri aktarma işlemini başlat
+            result = import_webtoon_from_source(source_url, source_name, True, max_chapters)
+            
+            if result.get('success', False):
+                messages.success(request, f"{result['webtoon'].title} başarıyla içeri aktarıldı. {result.get('imported_chapters', 0)} bölüm içeri aktarıldı.")
+                return redirect('admin:webtoons_webtoon_change', result['webtoon'].id)
+            else:
+                messages.error(request, f"İçeri aktarma başarısız: {result.get('message', 'Bilinmeyen hata')}")
+    else:
+        # URL parametresi varsa form alanını doldur
+        initial_data = {}
+        if 'url' in request.GET:
+            initial_data['source_url'] = request.GET.get('url')
+        
+        form = ImportWebtoonForm(initial=initial_data)
+    
+    # Mevcut kaynakları göster
+    sources = ExternalSource.objects.all()
+    
+    # Son içeri aktarma loglarını göster
+    recent_logs = ImportLog.objects.order_by('-start_time')[:10]
+    
+    return render(request, 'webtoons/import_webtoon.html', {
+        'form': form,
+        'sources': sources,
+        'recent_logs': recent_logs,
+        'title': 'İçeri Webtoon Aktar'
+    })
+
+@login_required
+@user_passes_test(is_staff)
+def check_source(request):
+    """Kaynak URL'sini kontrol et ve bilgi getir"""
+    url = request.GET.get('url', '')
+    
+    if not url:
+        return JsonResponse({'error': 'URL belirtilmedi'})
+    
+    # URL'nin hangi siteye ait olduğunu belirle
+    is_mangadex = "mangadex.org" in url.lower()
+    is_mangazure = "mangazure.net" in url.lower()
+    
+    source_type = "MangaDex" if is_mangadex else "MangaZure" if is_mangazure else "Bilinmeyen Kaynak"
+    
+    return JsonResponse({
+        'source_type': source_type,
+        'valid': is_mangadex or is_mangazure,
+        'message': f"Bu URL {source_type} sitesine ait görünüyor." if is_mangadex or is_mangazure else "Bu URL desteklenen bir kaynak sitesine ait değil."
+    })
+
+@user_passes_test(is_admin)
+def admin_fix_chapters(request):
+    """Bozuk veya yarım kalan bölümleri düzeltme sayfası"""
+    from django.core.management import call_command
+    from io import StringIO
+    from django.db.models import Count
+    
+    # Bölüm sayısına göre webtoonları al
+    webtoons = Webtoon.objects.annotate(chapter_count=Count('chapters')).order_by('-chapter_count')
+    
+    # Resmi olmayan bölümleri bul
+    empty_chapters = Chapter.objects.annotate(
+        image_count=Count('images')
+    ).filter(
+        image_count=0
+    ).select_related('webtoon')
+    
+    # Bir webtoon'un boş bölümlerini temizle
+    if request.method == 'POST' and 'webtoon_slug' in request.POST:
+        webtoon_slug = request.POST.get('webtoon_slug')
+        fix_empty = 'fix_empty' in request.POST
+        clean_missing_images = 'clean_missing_images' in request.POST
+        delete_orphaned = 'delete_orphaned' in request.POST
+        
+        # Yönetim komutunu çalıştır
+        out = StringIO()
+        try:
+            call_command(
+                'sync_media_database',
+                webtoon_slug=webtoon_slug,
+                fix_empty_chapters=fix_empty,
+                clean_missing_images=clean_missing_images,
+                delete_orphaned_media=delete_orphaned,
+                stdout=out
+            )
+            output = out.getvalue()
+            messages.success(request, f"İşlem tamamlandı. {webtoon_slug} için temizleme işlemi yapıldı.")
+            messages.info(request, output)
+        except Exception as e:
+            messages.error(request, f"Hata oluştu: {str(e)}")
+        
+        return redirect('webtoons:admin_fix_chapters')
+    
+    return render(request, 'webtoons/admin/fix_chapters.html', {
+        'webtoons': webtoons,
+        'empty_chapters': empty_chapters,
+        'empty_chapters_count': empty_chapters.count(),
+        'title': 'Bozuk Bölümleri Düzelt',
+    })

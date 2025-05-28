@@ -143,6 +143,15 @@ footer a:hover {
     border-color: #343a40;
 }
 
+/* Görüntülenme sayısı için stil */
+.views-count {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 767.98px) {
     .card-img-top {

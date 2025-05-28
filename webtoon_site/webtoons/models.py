@@ -2,10 +2,40 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
+from django.utils.text import slugify
+from django.conf import settings
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+import os
+
+def webtoon_thumbnail_path(instance, filename):
+    """Webtoon kapak resmi için dosya yolu belirler"""
+    # Dosya uzantısını al
+    ext = filename.split('.')[-1]
+    # Yeni dosya adı oluştur
+    filename = f"{instance.slug}.{ext}"
+    # Dosya yolunu döndür
+    return f'webtoons/covers/{filename}'
+
+def chapter_image_path(instance, filename):
+    """Bölüm resimleri için dosya yolu belirler"""
+    # Webtoon ve bölüm bilgilerini al
+    webtoon_slug = instance.chapter.webtoon.slug
+    chapter_number = str(instance.chapter.number).replace('.', '-')
+    
+    # Dosya uzantısını al
+    ext = filename.split('.')[-1]
+    
+    # Sıra numarasına göre dosya adı oluştur
+    filename = f"{instance.order:03d}.{ext}"
+    
+    # Dosya yolunu döndür
+    return f'webtoons/content/{webtoon_slug}/chapter-{chapter_number}/{filename}'
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
+    description = models.TextField(blank=True)
     
     class Meta:
         verbose_name_plural = 'Categories'
@@ -28,7 +58,7 @@ class Webtoon(models.Model):
     author = models.CharField(max_length=100)
     artist = models.CharField(max_length=100, blank=True)
     description = models.TextField()
-    thumbnail = models.ImageField(upload_to='webtoons/thumbnails/')
+    thumbnail = models.ImageField(upload_to=webtoon_thumbnail_path, blank=True, null=True)
     categories = models.ManyToManyField(Category, related_name='webtoons')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='ongoing')
     created_date = models.DateTimeField(auto_now_add=True)
@@ -44,6 +74,11 @@ class Webtoon(models.Model):
     
     def get_absolute_url(self):
         return reverse('webtoon_detail', args=[self.slug])
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 class WebtoonsView(models.Model):
     webtoon = models.ForeignKey(Webtoon, on_delete=models.CASCADE, related_name='views_log')
@@ -73,30 +108,32 @@ class WebtoonsView(models.Model):
 class Chapter(models.Model):
     webtoon = models.ForeignKey(Webtoon, on_delete=models.CASCADE, related_name='chapters')
     title = models.CharField(max_length=200)
-    number = models.FloatField()
+    number = models.PositiveIntegerField()
     release_date = models.DateTimeField(default=timezone.now)
+    views = models.PositiveIntegerField(default=0)
     published = models.BooleanField(default=True)
     
     class Meta:
-        ordering = ['number']
+        ordering = ['-number']
         unique_together = ['webtoon', 'number']
     
     def __str__(self):
-        return f"{self.webtoon.title} - Bölüm {self.number}: {self.title}"
+        return f"{self.webtoon.title} - {self.title}"
     
     def get_absolute_url(self):
         return reverse('chapter_detail', args=[self.webtoon.slug, self.number])
 
 class ChapterImage(models.Model):
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='webtoons/chapters/')
-    order = models.PositiveIntegerField(default=0)
+    image = models.ImageField(upload_to=chapter_image_path)
+    order = models.PositiveIntegerField()
+    
+    def __str__(self):
+        return f"{self.chapter} - Image {self.order}"
     
     class Meta:
         ordering = ['order']
-    
-    def __str__(self):
-        return f"{self.chapter.webtoon.title} - Bölüm {self.chapter.number} - Görsel {self.order}"
+        unique_together = ['chapter', 'order']
 
 class Comment(models.Model):
     webtoon = models.ForeignKey(Webtoon, on_delete=models.CASCADE, related_name='comments')
@@ -204,3 +241,22 @@ class ImportLog(models.Model):
     
     def __str__(self):
         return f"{self.source.name} - {self.status} - {self.start_time.strftime('%Y-%m-%d %H:%M')}"
+
+# Resim içeren modeller için silme sinyalleri
+@receiver(post_delete, sender='webtoons.Webtoon')
+def auto_delete_webtoon_file_on_delete(sender, instance, **kwargs):
+    """
+    Webtoon silindiğinde thumbnail dosyasını da sil
+    """
+    if instance.thumbnail:
+        if os.path.isfile(instance.thumbnail.path):
+            os.remove(instance.thumbnail.path)
+
+@receiver(post_delete, sender='webtoons.ChapterImage')
+def auto_delete_chapter_image_on_delete(sender, instance, **kwargs):
+    """
+    ChapterImage silindiğinde ilişkili dosyayı da sil
+    """
+    if instance.image:
+        if os.path.isfile(instance.image.path):
+            os.remove(instance.image.path)

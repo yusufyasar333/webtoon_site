@@ -67,7 +67,7 @@
                             <span class="badge {% if webtoon.status == 'ongoing' %}bg-success{% elif webtoon.status == 'completed' %}bg-primary{% else %}bg-warning{% endif %}">
                                 {{ webtoon.get_status_display }}
                             </span>
-                            <small class="text-muted">{{ webtoon.views }} görüntülenme</small>
+                            <small class="text-muted views-count">{{ webtoon.views }} görüntülenme</small>
                         </div>
                     </div>
                 </div>

@@ -108,22 +108,26 @@ class ImportWebtoonForm(forms.Form):
     """Webtoon içeri aktarma formu"""
     source_url = forms.URLField(
         label="Kaynak URL",
-        widget=forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'https://example-webtoon-site.com/webtoon/123'})
+        help_text="MangaZure'da içeri aktarmak istediğiniz webtoon sayfasının URL'sini girin.",
+        widget=forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'https://mangazure.net/manga/...', 'required': True})
     )
     source_name = forms.CharField(
         label="Kaynak Adı",
         required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: Example Webtoon Site'})
+        help_text="Boş bırakırsanız, otomatik olarak alan adından alınacaktır.",
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'MangaZure'})
     )
     max_chapters = forms.IntegerField(
         label="Maksimum Bölüm Sayısı",
         required=False,
         min_value=1,
-        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Boş bırakılırsa tüm bölümler indirilir'})
+        help_text="Sınırlamak için bir sayı girin, boş bırakırsanız tüm bölümler içeri aktarılır.",
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Örn: 10'})
     )
-    auto_sync = forms.BooleanField(
-        label="Otomatik Senkronizasyon",
-        required=False,
-        initial=True,
-        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
-    ) 
+    
+    def clean_source_url(self):
+        url = self.cleaned_data['source_url']
+        # Desteklenen siteleri kontrol et
+        if not ("mangazure.net" in url.lower() or "mangadex.org" in url.lower()):
+            raise forms.ValidationError("Sadece MangaZure ve MangaDex URL'leri desteklenmektedir.")
+        return url 

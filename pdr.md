@@ -42,6 +42,7 @@
 - [ ] Güvenlik kontrolleri
 
 ## Deployment
+- [x] Dosyaların düzenlenmesi ve gereksiz dosyaların kaldırılması
 - [ ] Hosting seçimi
 - [ ] Domain ayarları
 - [ ] Veritabanı migration

@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Webtoon İçeri Aktar{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Webtoon İçeri Aktar</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" id="importForm">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.source_url.id_for_label }}" class="form-label">{{ form.source_url.label }}</label>
+                            {{ form.source_url }}
+                            <div class="form-text">{{ form.source_url.help_text }}</div>
+                            {% if form.source_url.errors %}
+                                <div class="invalid-feedback d-block">{{ form.source_url.errors }}</div>
+                            {% endif %}
+                            <div id="sourceInfo" class="mt-2"></div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.source_name.id_for_label }}" class="form-label">{{ form.source_name.label }}</label>
+                            {{ form.source_name }}
+                            <div class="form-text">{{ form.source_name.help_text }}</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.max_chapters.id_for_label }}" class="form-label">{{ form.max_chapters.label }}</label>
+                            {{ form.max_chapters }}
+                            <div class="form-text">{{ form.max_chapters.help_text }}</div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" id="checkSourceBtn" class="btn btn-secondary me-md-2">Kaynağı Kontrol Et</button>
+                            <button type="submit" class="btn btn-primary">İçeri Aktar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Son İçeri Aktarma Logları -->
+            <div class="card shadow-sm mt-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Son İçeri Aktarma İşlemleri</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Kaynak</th>
+                                    <th>Webtoon</th>
+                                    <th>Durum</th>
+                                    <th>Tarih</th>
+                                    <th>Bölümler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for log in recent_logs %}
+                                <tr>
+                                    <td>{{ log.source.name }}</td>
+                                    <td>{% if log.imported_webtoon %}{{ log.imported_webtoon.webtoon.title }}{% else %}-{% endif %}</td>
+                                    <td>
+                                        {% if log.status == 'completed' %}
+                                            <span class="badge bg-success">Tamamlandı</span>
+                                        {% elif log.status == 'running' %}
+                                            <span class="badge bg-warning">Devam Ediyor</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">Başarısız</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ log.start_time|date:"d/m/Y H:i" }}</td>
+                                    <td>{{ log.imported_chapters|default:"0" }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" class="text-center">Henüz içeri aktarma işlemi yapılmamış.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Desteklenen Kaynaklar</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        {% for source in sources %}
+                        <div class="list-group-item">
+                            <h6 class="mb-1">{{ source.name }}</h6>
+                            <p class="mb-1 small text-muted">{{ source.base_url }}</p>
+                        </div>
+                        {% empty %}
+                        <div class="list-group-item">
+                            <p class="mb-0">Henüz kaynak tanımlanmamış.</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm mt-4">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">Yardım</h5>
+                </div>
+                <div class="card-body">
+                    <h6>Desteklenen Siteler:</h6>
+                    <ul>
+                        <li><strong>MangaZure:</strong> https://mangazure.net/manga/...</li>
+                        <li><strong>MangaDex:</strong> https://mangadex.org/title/...</li>
+                    </ul>
+                    
+                    <h6>İpuçları:</h6>
+                    <ul>
+                        <li>Tüm bölümleri içeri aktarmak yerine, önce az sayıda bölüm içeri aktararak test edin.</li>
+                        <li>Kaynak kontrolü yaparak URL'nin geçerli olduğundan emin olun.</li>
+                        <li>İçeri aktarma süreci büyük webtoonlar için zaman alabilir, lütfen bekleyin.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sourceUrlInput = document.getElementById('{{ form.source_url.id_for_label }}');
+        const checkSourceBtn = document.getElementById('checkSourceBtn');
+        const sourceInfoDiv = document.getElementById('sourceInfo');
+        
+        checkSourceBtn.addEventListener('click', function() {
+            const url = sourceUrlInput.value.trim();
+            if (!url) {
+                sourceInfoDiv.innerHTML = '<div class="alert alert-warning">URL girişi boş olamaz.</div>';
+                return;
+            }
+            
+            // Kaynak kontrolü için AJAX isteği
+            fetch('{% url "webtoons:check_source" %}?url=' + encodeURIComponent(url))
+                .then(response => response.json())
+                .then(data => {
+                    if (data.valid) {
+                        sourceInfoDiv.innerHTML = `<div class="alert alert-success">
+                            <i class="bi bi-check-circle-fill"></i> ${data.message}
+                        </div>`;
+                    } else {
+                        sourceInfoDiv.innerHTML = `<div class="alert alert-danger">
+                            <i class="bi bi-exclamation-triangle-fill"></i> ${data.message}
+                        </div>`;
+                    }
+                })
+                .catch(error => {
+                    sourceInfoDiv.innerHTML = '<div class="alert alert-danger">Kaynak kontrolü sırasında bir hata oluştu.</div>';
+                    console.error('Error:', error);
+                });
+        });
+    });
+</script>
+{% endblock %} 

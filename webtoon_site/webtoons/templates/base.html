@@ -1,0 +1,15 @@
+<!-- Admin menüsü -->
+{% if user.is_staff %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-gear-fill"></i> Yönetim
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+        <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin Paneli</a></li>
+        <li><a class="dropdown-item" href="{% url 'webtoons:import_webtoon' %}">İçerik İçeri Aktar</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="{% url 'webtoons:admin_webtoons' %}">Webtoonları Yönet</a></li>
+        <li><a class="dropdown-item" href="{% url 'webtoons:admin_categories' %}">Kategorileri Yönet</a></li>
+    </ul>
+</li>
+{% endif %} 
